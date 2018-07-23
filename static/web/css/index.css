@@ -13,3 +13,19 @@
 	background: #B90707;
 	font-weight: bold;
 }
+
+#servicios:hover {
+	color: #FFFFFF;
+	background: #B90707;
+	font-weight: bold;	
+}
+
+#horarios:hover {
+	color: #FFFFFF;
+	background: #B90707;
+	font-weight: bold;	
+}
+
+.tabla {
+	background: #FFFFFF;
+}

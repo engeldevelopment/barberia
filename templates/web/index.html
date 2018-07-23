@@ -8,13 +8,10 @@
 	<link rel="stylesheet" href="{% static 'web/css/index.css' %}">
 </head>
 <body>
-	
 	<div class="container">
-	
 		<header id="header" class="card card-header">
 			<h1 class="title"> BarberCachet's </h1>
 		</header>
-
 		{% block nav %}
 			
 			{% include 'web/nav.html' %}
@@ -22,19 +19,9 @@
 		{% endblock %}
 		<div class="jumbotron">
 			{% block content %}
-					<h1 class="display-3"> Bienvenido a <strong> BarberCachet's </strong></h1>
-					<p> Aquí encontaras todo lo referente a nuestros servicios</p>
+				<h1 class="display-3"> Bienvenido a <strong> BarberCachet's </strong>
+				</h1>
 			{% endblock %}
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<h1>Barber's</h1>
-				<p> Encontrás todo acerca de cada barbero a nuestra disposición</p>				
-			</div>
-			<div class="col-md-4">
-				<h1>Horarios</h1>
-				<p> También sabras sobre los días que estaremos disponibles</p>
-			</div>			
 		</div>
 	</div>
 

@@ -1,0 +1,33 @@
+
+{% extends 'web/index.html' %}
+
+{% block title %} Servicios {% endblock %}
+
+{% block content %}
+	
+	{% if servicios %}
+	<table class="table table-hover tabla">
+		<thead>
+			<tr>
+				<th> Servicios</th>
+				<th> Precios </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for servicio in servicios %}
+			<tr id="servicios">
+				<td> {{ servicio.descripcion }}</td>
+				<td> {{ servicio.precio }} Bsf</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+		<div class="row">
+			<div class="col-md-5">
+				<h2> Disculpa! Aún no tenemos los servicios disponibles </h2>	
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}
