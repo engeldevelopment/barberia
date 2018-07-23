@@ -1,0 +1,15 @@
+
+#menu a {
+	color: #FFFFFF;
+}
+
+.title {
+	color: #B90707;
+	font-weight: bold;
+}
+
+#menu a:hover {
+	color: #FFFFFF;
+	background: #B90707;
+	font-weight: bold;
+}
