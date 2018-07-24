@@ -1,0 +1,31 @@
+{% extends 'web/index.html' %}
+
+{% block title %} Información del Barbero {% endblock %}
+
+{% block content %}
+		<div class="list-group">
+		<h4>Detalles</h4>
+			<li class="list-group-item"> 
+				Barber: {{ barbero }}
+			</li>
+			{% if contactos %}
+				<h4> Contactos </h4>
+				{% for contacto in contactos %}
+					<li class="list-group-item"> 
+						Teléfono: {{ contacto.numero }}
+					</li>
+				{% endfor %}
+			{% endif %}
+			{% if cuentas %}
+				<h4> Cuentas </h4>
+				{% for cuenta in cuentas %}
+					<li class="list-group-item"> 
+						Cuenta: {{ cuenta }} <br/>
+						Tipo: {{cuenta.definir_tipo}} <br/>
+						Cédula: {{barbero.cedula}}
+					</li>
+				{% endfor %}
+			{% endif %}
+		</div>
+		<a href="{% url 'barberos:barberos' %}">Atrás</a>
+{% endblock %}

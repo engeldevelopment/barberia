@@ -1,0 +1,52 @@
+
+{% extends 'web/index.html' %}
+
+{% block title %} Barberos {% endblock %}
+
+{% block content %}
+
+	{% if barberos %}
+	<table class="table table-info tabla">
+		<thead>
+			<tr>
+				<th> Barberos </th>
+				<th> Estado </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for barbero in barberos %}
+			<tr id="barberos">
+				<td> 
+					{{ barbero }} 
+				</td>
+				<div class="row">
+					{% if barbero.activo %}
+						<td class="badge badge-dark col"> 
+							Activo
+						</td>
+					{% else %}
+						<td class="badge badge-secondary col"> 
+							Inactivo
+						</td>
+					{% endif %}
+					<td class="col-md-2">
+						<a href="{% url 'barberos:info' barbero.pk %}"> Info </a>
+					</td>	
+				</div>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+		<div class="row">
+			<div class="col-md-5">
+				<h2> Disculpa! Aún no tenemos los barberos disponibles </h2>	
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}
+
+{% block card %}
+
+{% endblock %}

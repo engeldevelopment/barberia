@@ -9,10 +9,11 @@
 </head>
 <body>
 	<div class="container">
-		
-		<header id="header" class="card card-header">
-			<h1 class="title"> BarberCachet's </h1>
-		</header>
+		<div class="row">
+			<header id="header">
+				<h1 class="title col-lg-1"> BarberCachet's </h1>
+			</header>
+		</div>
 		{% block nav %}
 			
 			{% include 'web/nav.html' %}
@@ -20,7 +21,7 @@
 		{% endblock %}
 		<div class="jumbotron">
 			{% block content %}
-				<h1 class="display-3"> Bienvenido a <strong> BarberCachet's </strong>
+				<h1 class="display-3"> Bienvenido a <strong> BarberCachet's</strong>
 				</h1>
 			{% endblock %}
 		</div>
