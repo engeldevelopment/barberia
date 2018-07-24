@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div class="container">
+		
 		<header id="header" class="card card-header">
 			<h1 class="title"> BarberCachet's </h1>
 		</header>
@@ -23,6 +24,15 @@
 				</h1>
 			{% endblock %}
 		</div>
+		
+		<div class="row">
+			<div class="align-content-center col-md-5">
+			{% block card %}
+			
+			{% endblock %}
+			</div>	
+		</div>
+		
 	</div>
 
 	{% block js %}
