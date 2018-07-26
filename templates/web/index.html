@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
+{% load staticfiles %}
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
@@ -19,10 +19,9 @@
 			{% include 'web/nav.html' %}
 
 		{% endblock %}
-		<div class="jumbotron">
+		<div class="jumbotron" id="contenido">
 			{% block content %}
-				<h1 class="display-3"> Bienvenido a <strong> BarberCachet's</strong>
-				</h1>
+				{% include 'web/carrusel.html' %}
 			{% endblock %}
 		</div>
 		
