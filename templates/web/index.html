@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="{% static 'web/css/index.css' %}">
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<header id="header">
 				<h1 class="title col-lg-1"> BarberCachet's </h1>
@@ -25,20 +25,23 @@
 			{% endblock %}
 		</div>
 		
-		<div class="row">
-			<div class="col-md-5">
+	</div>
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col d-block">
 			{% block card %}
 			
 			{% endblock %}
 			</div>	
 		</div>
-		
 	</div>
 
 	{% block js %}
 	<script src="{% static 'web/js/jquery.min.js' %}"></script>
 	<script src="{% static 'web/js/popper.min.js' %}"></script>
 	<script src="{% static 'web/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'web/js/nav.js' %}"></script>
 	{% endblock %}
 </body>
 </html>
