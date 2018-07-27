@@ -6,37 +6,35 @@
 {% block content %}
 
 	{% if barberos %}
-	<table class="table table-info tabla">
-		<thead>
-			<tr>
-				<th> Barberos </th>
-				<th> Estado </th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for barbero in barberos %}
-			<tr id="barberos">
-				<td> 
-					{{ barbero }} 
-				</td>
-				<div class="row">
-					{% if barbero.activo %}
-						<td class="badge badge-dark col"> 
-							Activo
-						</td>
-					{% else %}
-						<td class="badge badge-secondary col"> 
-							Inactivo
-						</td>
-					{% endif %}
-					<td class="col-md-2">
-						<a href="{% url 'barberos:info' barbero.pk %}"> Info </a>
-					</td>	
+
+		{% for barbero in barberos %}
+		<div class="row justify-content-center">
+			<div class="card col-md-8">
+				<div class="card-header">
+					<p>Barber: {{barbero}}</p>
 				</div>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+				<div class="card-body">
+					<div class="card-text">
+						<div class="row col-md-4">	
+							Estado: 	
+							{% if barbero.activo %}
+								<span class="badge badge-dark offset-1">
+									{{barbero.activo | yesno:"Activo, Inactivo"}}
+								</span>
+							{% else %}
+								<span class="badge badge-secondary offset-1">
+									{{barbero.activo | yesno:"Activo, Inactivo"}}
+								</span>
+							{% endif %}
+							
+							<a href="{% url 'barberos:info' barbero.pk %}" class="badge badge-success"> Info </a>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div> <br/>	
+		{% endfor %}
+	
 	{% else %}
 		<div class="row">
 			<div class="col-md-5">
@@ -54,7 +52,7 @@
 		</div>
 		<div class="card-body">
 			<div class="card-text">	
-				<p> Aquí encontrarás la información de cada barbero como sus datos bancarios y sus contactos, también sabrás si se encuentra activo (afeitando) o inactivo.. </p>
+				<p> Aquí encontrarás la información de cada barbero como sus datos bancarios y sus contactos, también sabrás si se encuentra activo (afeitando) o inactivo...</p>
 			</div>
 		</div>
 	</div>
