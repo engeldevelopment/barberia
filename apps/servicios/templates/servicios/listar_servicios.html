@@ -6,24 +6,31 @@
 {% block content %}
 	
 	{% if servicios %}
-	<table class="table table-hover tabla">
-		<thead>
-			<tr>
-				<th> Servicios</th>
-				<th> Precios </th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for servicio in servicios %}
-			<tr id="servicios">
-				<td> {{ servicio.descripcion }}</td>
-				<td> {{ servicio.precio }} Bsf</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+	
+		<table class="table table-hover tabla">
+			<thead>
+				<tr>
+					<th> Servicios</th>
+					<th> Precios </th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for servicio in servicios %}
+				<tr id="servicios">
+					<td> {{ servicio.descripcion }}</td>
+					<td> {{ servicio.precio |floatformat}} Bs.S </td>
+					{% if user.is_authenticated and user.is_superuser %}
+						<td class="row">
+							<a href="{% url 'servicios:editar_servicio' servicio.pk %}" class="btn btn-link"> Editar </a>
+						</td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	
 	{% else %}
-		<div class="row">
+		<div class="row col-md-5 offset-3">
 			<div class="col-md-5">
 				<h2> Disculpa! Aún no tenemos los servicios disponibles </h2>	
 			</div>

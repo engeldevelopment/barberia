@@ -4,7 +4,7 @@
 	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>	
 	</button>
-
+	
 	<div class="collapse navbar-collapse" id="menu">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
@@ -16,6 +16,16 @@
 			<li class="nav-item">
 				<a href="{% url 'servicios:servicios' %}" class="nav-link"> Servicios </a>
 			</li>
+
+			{% if user.is_authenticated %}
+			<li class="nav-item">
+				<a href="{% url 'logout' %}" class="nav-link"> Salir </a>
+			</li>
+			{% else %}
+			<li class="nav-item">
+				<a href="{% url 'login' %}" class="nav-link"> Entrar </a>
+			</li>
+			{% endif %}	
 		</ul>	
 	</div>
 </nav>
