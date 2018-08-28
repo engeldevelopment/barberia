@@ -1,10 +1,12 @@
 
 from django.shortcuts import render
-from django.views.generic import * 
+from django.views import generic
+from django.urls import reverse_lazy
 from .models import * 
+from .forms import RegistrarContacto
 
 
-class BarberoList(ListView):
+class BarberoList(generic.ListView):
 	model = Barbero
 	context_object_name = "barberos"
 	template_name = "barberos/listar_barberos.html"
@@ -21,3 +23,22 @@ def informacion_de_barbero(request, id_barbero):
 		 'contactos': contactos,
 		 'cuentas': cuentas
 		})	
+
+
+def index(request):
+	return render(request, 'barberos/index.html')
+
+
+class ContactoUpdate(generic.UpdateView):
+	model = Contacto
+	form_class = RegistrarContacto
+	template_name = 'barberos/add_contacto.html'
+	context_object_name = 'contacto'
+	success_url = reverse_lazy('barberos:barberos')
+
+
+class ContactoDelete(generic.DeleteView):
+	model = Contacto
+	template_name = 'barberos/eliminar_contacto.html'
+	context_object_name = 'contacto'
+	success_url = reverse_lazy('barberos:barberos')	
