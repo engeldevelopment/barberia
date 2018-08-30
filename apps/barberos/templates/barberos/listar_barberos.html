@@ -27,7 +27,7 @@
 								</span>
 							{% endif %}
 							
-							<a href="{% url 'barberos:info' barbero.pk %}" class="badge badge-success"> Info </a>
+							<a href="{{barbero.get_absolute_url}}" class="badge badge-success"> Info </a>
 						</div>
 					</div>
 				</div>
