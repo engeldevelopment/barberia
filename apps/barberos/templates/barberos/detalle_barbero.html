@@ -3,35 +3,42 @@
 {% block title %} Información del Barbero {% endblock %}
 
 {% block content %}
-		<div class="list-group">
-		<h4>Detalles</h4>
-			<li class="list-group-item"> 
-				Barber: {{ barbero }}
-			</li>
-			{% if contactos %}
-				<h4> Contactos </h4>
-				{% for contacto in contactos %}
-					<li class="list-group-item"> 
-						Teléfono: {{ contacto.numero }}
-						{% if user.is_authenticated and user.is_superuser %}
-							<div class="btn-group">
-								<a href="{% url 'barberos:editar_contacto' contacto.pk %}" class="btn btn-link"> Editar </a>
-								<a href="{% url 'barberos:eliminar_contacto' contacto.pk %}" class="btn btn-link"> Eliminar </a>
-							</div>
-						{% endif %}
-					</li>
-				{% endfor %}
-			{% endif %}
-			{% if cuentas %}
-				<h4> Cuentas </h4>
-				{% for cuenta in cuentas %}
-					<li class="list-group-item"> 
-						Cuenta: {{ cuenta }} <br/>
-						Tipo: {{cuenta.definir_tipo}} <br/>
-						Cédula: {{barbero.cedula}}
-					</li>
-				{% endfor %}
-			{% endif %}
-		</div>
-		<a href="{% url 'barberos:barberos' %}">Atrás</a>
+<div class="list-group">
+	<h4>Detalles</h4>
+		<li class="list-group-item"> 
+			Barber: {{ barbero }}
+		</li>
+		{% if user.is_superuser %}
+			<div>
+				<a href="{% url 'barberos:crear_contacto' barbero.pk %}" class="btn btn-link"> Nuevo Contacto </a>
+			</div>
+		{% endif %}
+
+		{% if contactos %}
+			<h4> Contactos </h4>
+			{% for contacto in contactos %}
+				<li class="list-group-item"> 
+					Teléfono: {{ contacto.numero }}
+				{% if user.is_authenticated and user.is_superuser %}
+					<div class="btn-group">
+						<a href="{% url 'barberos:editar_contacto' contacto.pk %}" class="btn btn-link"> Editar </a>
+						<a href="{% url 'barberos:eliminar_contacto' contacto.pk %}" class="btn btn-link"> Eliminar </a>
+					</div>
+				{% endif %}
+				</li>
+			{% endfor %}
+		{% endif %}
+
+		{% if cuentas %}
+			<h4> Cuentas </h4>
+			{% for cuenta in cuentas %}
+				<li class="list-group-item"> 
+					Cuenta: {{ cuenta }} <br/>
+					Tipo: {{cuenta.definir_tipo}} <br/>
+					Cédula: {{barbero.cedula}}
+				</li>
+			{% endfor %}
+		{% endif %}
+</div>
+<a href="{% url 'barberos:barberos' %}">Atrás</a>
 {% endblock %}

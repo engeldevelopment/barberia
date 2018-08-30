@@ -1,5 +1,6 @@
 
 from django.db import models
+from django.urls import reverse
 
 
 class Barbero(models.Model):
@@ -8,6 +9,11 @@ class Barbero(models.Model):
 	apellido = models.CharField(max_length=30)
 	apodo = models.CharField(max_length=30)
 	activo = models.BooleanField(default=True)
+
+
+	def get_absolute_url(self):
+		return reverse('barberos:detalle-barbero', kwargs={'pk':self.pk})
+
 
 	def __str__(self):
 		return "{nombre} ({apodo})".format(nombre=self.nombre,\
