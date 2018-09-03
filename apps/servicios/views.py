@@ -8,9 +8,9 @@ from .forms import RegistrarServicio
 
 class ServicioCreate(generic.CreateView):
 	model = Servicio
-	template_name = 'servicios/registrar_servicio.html'
 	form_class = RegistrarServicio
-	success_url = reverse_lazy("servicios:index")
+	template_name = 'servicios/registrar_servicio.html'
+	success_url = reverse_lazy('servicios:servicios') 	
 
 
 class ServiciosList(generic.ListView):
@@ -25,7 +25,14 @@ class ServicioUpdate(generic.UpdateView):
 	form_class = RegistrarServicio
 	template_name = 'servicios/editar_servicio.html'
 	context_object_name = 'servicio'
-	success_url = reverse_lazy('servicios:index') 	
+	success_url = reverse_lazy('servicios:servicios')
+
+
+class ServicioDelete(generic.DeleteView):
+	model = Servicio
+	template_name = 'servicios/eliminar_servicio.html'
+	context_object_name = 'servicio'
+	success_url = reverse_lazy('servicios:servicios') 		
 
 
 class HorarioList(generic.ListView):

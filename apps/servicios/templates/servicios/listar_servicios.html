@@ -18,6 +18,9 @@
 				<tr>
 					<th> Servicios</th>
 					<th> Precios </th>
+					{% if user.is_superuser %}
+					<th> Acciones </th>
+					{% endif %}
 				</tr>
 			</thead>
 			<tbody>
@@ -28,6 +31,8 @@
 					{% if user.is_authenticated and user.is_superuser %}
 						<td class="row">
 							<a href="{% url 'servicios:editar_servicio' servicio.pk %}" class="btn btn-link"> Editar </a>
+
+							<a href="{% url 'servicios:eliminar_servicio' servicio.pk %}" class="btn btn-link"> Eliminar </a>
 						</td>
 					{% endif %}
 				</tr>
