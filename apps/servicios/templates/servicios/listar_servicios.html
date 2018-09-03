@@ -5,6 +5,12 @@
 
 {% block content %}
 	
+	{% if user.is_superuser %}
+		<div class="row col-md-2">
+			<a href="{% url 'servicios:crear_servicio' %}" class="btn btn-link">Nuevo</a>
+		</div>
+	{% endif %}
+
 	{% if servicios %}
 	
 		<table class="table table-hover tabla">
