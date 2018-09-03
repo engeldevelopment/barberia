@@ -116,5 +116,5 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'servicios:index'
+LOGIN_REDIRECT_URL = 'servicios:servicios'
 LOGOUT_REDIRECT_URL = 'login'

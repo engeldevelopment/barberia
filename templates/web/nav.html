@@ -8,22 +8,22 @@
 	<div class="collapse navbar-collapse" id="menu">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a href="{% url 'servicios:horario' %}" class="nav-link"> Horario </a>
+				<a href="{% url 'servicios:horario' %}" class="nav-link"> Horario <i class="far fa-clock"></i></a>
 			</li>
 			<li class="nav-item">
-				<a href="{% url 'barberos:barberos' %}" class="nav-link"> Barber's </a>
+				<a href="{% url 'barberos:barberos' %}" class="nav-link"> Barber's <i class="far fa-address-card"></i></a>
 			</li>
 			<li class="nav-item">
-				<a href="{% url 'servicios:index' %}" class="nav-link"> Servicios </a>
+				<a href="{% url 'servicios:servicios' %}" class="nav-link"> Servicios <i class="fas fa-tag"></i></a>
 			</li>
 
 			{% if user.is_authenticated %}
 			<li class="nav-item">
-				<a href="{% url 'logout' %}" class="nav-link"> Salir </a>
+				<a href="{% url 'logout' %}" class="nav-link"> Salir <i class="fas fa-sign-out-alt"></i></a>
 			</li>
 			{% else %}
 			<li class="nav-item">
-				<a href="{% url 'login' %}" class="nav-link"> Entrar </a>
+				<a href="{% url 'login' %}" class="nav-link"> Entrar <i class="fas fa-sign-in-alt"></i></a>
 			</li>
 			{% endif %}	
 		</ul>	

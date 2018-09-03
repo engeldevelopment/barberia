@@ -7,7 +7,7 @@
 	
 	{% if user.is_superuser %}
 		<div class="row col-md-2">
-			<a href="{% url 'servicios:crear_servicio' %}" class="btn btn-link">Nuevo</a>
+			<a href="{% url 'servicios:crear_servicio' %}" class="btn btn-link"><i class="fas fa-plus"></i></a>
 		</div>
 	{% endif %}
 
@@ -30,9 +30,9 @@
 					<td> {{ servicio.precio |floatformat}} Bs.S </td>
 					{% if user.is_authenticated and user.is_superuser %}
 						<td class="row">
-							<a href="{% url 'servicios:editar_servicio' servicio.pk %}" class="btn btn-link"> Editar </a>
+							<a href="{% url 'servicios:editar_servicio' servicio.pk %}" class="btn btn-link"><i class="far fa-edit"></i></a>
 
-							<a href="{% url 'servicios:eliminar_servicio' servicio.pk %}" class="btn btn-link"> Eliminar </a>
+							<a href="{% url 'servicios:eliminar_servicio' servicio.pk %}" class="btn btn-link"> <i class="far fa-trash-alt"></i> </a>
 						</td>
 					{% endif %}
 				</tr>

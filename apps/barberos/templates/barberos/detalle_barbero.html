@@ -10,7 +10,7 @@
 		</li>
 		{% if user.is_superuser %}
 			<div>
-				<a href="{% url 'barberos:crear_contacto' barbero.pk %}" class="btn btn-link"> Nuevo Contacto </a>
+				<a href="{% url 'barberos:crear_contacto' barbero.pk %}" class="btn btn-link"> <i class="fas fa-plus"></i> </a>
 			</div>
 		{% endif %}
 
@@ -21,8 +21,8 @@
 					Teléfono: {{ contacto.numero }}
 				{% if user.is_authenticated and user.is_superuser %}
 					<div class="btn-group">
-						<a href="{% url 'barberos:editar_contacto' contacto.pk %}" class="btn btn-link"> Editar </a>
-						<a href="{% url 'barberos:eliminar_contacto' contacto.pk %}" class="btn btn-link"> Eliminar </a>
+						<a href="{% url 'barberos:editar_contacto' contacto.pk %}" class="btn btn-link"> <i class="far fa-edit"></i></a>
+						<a href="{% url 'barberos:eliminar_contacto' contacto.pk %}" class="btn btn-link"> <i class="far fa-trash-alt"></i> </a>
 					</div>
 				{% endif %}
 				</li>

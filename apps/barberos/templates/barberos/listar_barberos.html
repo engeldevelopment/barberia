@@ -11,24 +11,25 @@
 		<div class="row justify-content-center">
 			<div class="card col-md-8">
 				<div class="card-header">
-					<p>Barber: {{barbero}}</p>
+					<p>Barber: {{barbero}}
+						<a href="{{barbero.get_absolute_url}}"> <i class="far fa-eye"></i></a> 
+					</p>
 				</div>
 				<div class="card-body">
-					<div class="card-text">
-						<div class="row col-md-4">	
-							Estado: 	
-							{% if barbero.activo %}
-								<span class="badge badge-dark offset-1">
-									{{barbero.activo | yesno:"Activo, Inactivo"}}
-								</span>
-							{% else %}
-								<span class="badge badge-secondary offset-1">
-									{{barbero.activo | yesno:"Activo, Inactivo"}}
-								</span>
-							{% endif %}
-							
-							<a href="{{barbero.get_absolute_url}}" class="badge badge-success"> Info </a>
-						</div>
+					<div class="card-text">	
+							<div class="row col-md-2">
+								<p> Estado:  	
+								{% if barbero.activo %}
+
+									<i class="fas fa-toggle-on"></i>
+
+								{% else %}
+
+									<i class="fas fa-toggle-off"></i>
+			
+								{% endif %}
+								</p>
+							</div>
 					</div>
 				</div>
 			</div>	
