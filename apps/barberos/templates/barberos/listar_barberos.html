@@ -5,6 +5,12 @@
 
 {% block content %}
 
+	<div class="row col-md-3">
+	{% if user.is_superuser %}
+		<a href="{% url 'barberos:crear' %}" class="btn btn-primary"> Nuevo </a>
+	{% endif %}
+	</div>
+
 	{% if barberos %}
 
 		{% for barbero in barberos %}

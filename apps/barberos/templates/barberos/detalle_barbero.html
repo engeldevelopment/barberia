@@ -14,8 +14,8 @@
 			</div>
 		{% endif %}
 
+		<h4> Contactos </h4>
 		{% if contactos %}
-			<h4> Contactos </h4>
 			{% for contacto in contactos %}
 				<li class="list-group-item"> 
 					Teléfono: {{ contacto.numero }}
@@ -27,10 +27,14 @@
 				{% endif %}
 				</li>
 			{% endfor %}
+		{% else %}
+			<h4> Sin contactos </h4>
 		{% endif %}
 
+		<h4> Cuentas </h4>
+
+		
 		{% if cuentas %}
-			<h4> Cuentas </h4>
 			{% for cuenta in cuentas %}
 				<li class="list-group-item"> 
 					Cuenta: {{ cuenta }} <br/>
@@ -38,6 +42,8 @@
 					Cédula: {{barbero.cedula}}
 				</li>
 			{% endfor %}
+		{% else %}
+			<h4> No tiene </h4>
 		{% endif %}
 </div>
 <a href="{% url 'barberos:barberos' %}">Atrás</a>

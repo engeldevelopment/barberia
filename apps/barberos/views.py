@@ -2,11 +2,18 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import * 
-from .forms import RegistrarContacto
+from .forms import RegistrarContacto, BarberoForm
 
 
 def index(request):
 	return render(request, 'barberos/index.html')
+
+	
+class BarberoCreateView(generic.CreateView):
+	model = Barbero
+	template_name = 'barberos/registrar-barbero.html'
+	form_class = BarberoForm
+	success_url = reverse_lazy('barberos:barberos')
 	
 
 class BarberoList(generic.ListView):
