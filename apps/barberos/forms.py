@@ -2,7 +2,7 @@ from django import forms
 from .models import Contacto, Barbero
 
 
-class RegistrarContacto(forms.ModelForm):
+class ContactoForm(forms.ModelForm):
 	class Meta:
 		model = Contacto
 		fields = ['numero']
@@ -12,11 +12,10 @@ class RegistrarContacto(forms.ModelForm):
 class BarberoForm(forms.ModelForm):
 	class Meta:
 		model = Barbero
-		fields = ['cedula', 'nombre', 'apellido', 'apodo', 'activo']
+		fields = ['cedula', 'nombre', 'apellido', 'apodo']
 		labels = {
-			'cedula': 'Cédula', 
-			'nombre': 'Nombre', 
-			'apellido': 'Apellido', 
-			'apodo': 'Apodo', 
-			'activo': '¿Está trabajando?',
-		} 		
+			'cedula': 'Cédula:',
+			'nombre': 'Nombre:',
+			'apellido': 'Apellido:',
+			'Apodo': 'Apodo:'
+		}
