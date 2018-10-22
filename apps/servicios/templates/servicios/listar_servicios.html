@@ -29,7 +29,7 @@
 					<td> {{ servicio.descripcion }}</td>
 					<td> {{ servicio.precio |floatformat}} Bs.S </td>
 					{% if user.is_authenticated and user.is_superuser %}
-						<td class="row">
+						<td>
 							<a href="{% url 'servicios:editar_servicio' servicio.pk %}" class="btn btn-link"><i class="far fa-edit"></i></a>
 
 							<a href="{% url 'servicios:eliminar_servicio' servicio.pk %}" class="btn btn-link"> <i class="far fa-trash-alt"></i> </a>

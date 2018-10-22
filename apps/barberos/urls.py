@@ -6,6 +6,7 @@ app_name = "barberos"
 
 urlpatterns = [
 	path('', index, name="index"),
+	path('registrar/', BarberoCreateView.as_view(), name='registrar'),
 	path('barberos/', BarberoList.as_view(), name="barberos"),
 	path('barberos/<int:pk>', BarberoDetail.as_view(), name="detalle-barbero"),
 	path('contacto/<int:id_barbero>/crear', crear_contacto, name='crear_contacto'),
