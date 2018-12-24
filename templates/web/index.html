@@ -15,15 +15,15 @@
 				<h1 class="title col-lg-1"> BarberCachet's </h1>
 			</header>
 		</div>
-		{% block nav %}
 			
-			{% include 'web/nav.html' %}
+		{% include 'web/nav.html' %}
 
+		<div class="container m-4">
+		{% block content %}
+			
+			{% include 'web/carrusel.html' %}
+		
 		{% endblock %}
-		<div class="jumbotron" id="contenido">
-			{% block content %}
-				{% include 'web/carrusel.html' %}
-			{% endblock %}
 		</div>
 		
 	</div>
