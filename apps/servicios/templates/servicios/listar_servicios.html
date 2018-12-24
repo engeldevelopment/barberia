@@ -28,8 +28,8 @@
 				<tr id="servicios">
 					<td> {{ servicio.descripcion }}</td>
 					<td> {{ servicio.precio |floatformat}} Bs.S </td>
-					{% if user.is_authenticated and user.is_superuser %}
-						<td class="row">
+					{% if user.is_superuser %}
+						<td>
 							<a href="{% url 'servicios:editar_servicio' servicio.pk %}" class="btn btn-link"><i class="far fa-edit"></i></a>
 
 							<a href="{% url 'servicios:eliminar_servicio' servicio.pk %}" class="btn btn-link"> <i class="far fa-trash-alt"></i> </a>
@@ -48,17 +48,4 @@
 		</div>
 	{% endif %}
 
-{% endblock %}
-
-{% block card %}
-	<div class="card">
-		<div class="card-header">
-			<h2> Servicios </h2>
-		</div>
-		<div class="card-body">
-			<div class="card-text">	
-				<p>Aquí encontrarás todo acerca de nuestros servicios disponible, como también su costo</p>
-			</div>
-		</div>
-	</div>
 {% endblock %}
