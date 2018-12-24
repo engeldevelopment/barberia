@@ -42,15 +42,13 @@ def crear_contacto(request, id_barbero):
 	else:
 		form = RegistrarContacto()
 
-	return render(request, 'barberos/add_contacto.html', context)
-
-	
+	return render(request, 'barberos/contacto_form.html', context)
 
 
 class ContactoUpdate(generic.UpdateView):
 	model = Contacto
 	form_class = RegistrarContacto
-	template_name = 'barberos/edit_contacto.html'
+	template_name = 'barberos/contacto_form.html'
 	context_object_name = 'contacto'
 	success_url = reverse_lazy('barberos:barberos')
 
