@@ -1,0 +1,25 @@
+{% extends 'web/index.html' %}
+
+
+{% block content %} 
+	<div class="container">
+	<div class="row">
+		{% if cortes %}
+			{% for corte in cortes %}
+				<div class="col-sm col-md col-lg-3 m-3">
+					<figure class="figure">
+						<h3 class="figure-caption"> <strong> {{ corte }} </strong></h3>
+						<hr/>
+				
+						<img src="{{corte.imagen.url}}" class="figure-img img-thumbnail rounded" style="height: 280px; width: 80%;"/>
+					</figure>
+				</div>
+			{% endfor %}
+			
+		{% else %}
+			<h4 class="text-center"> Upps! Aún no hemos cargado los cortes 
+			</h4>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

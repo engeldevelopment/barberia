@@ -2,7 +2,7 @@ from django import forms
 from .models import Contacto
 
 
-class RegistrarContacto(forms.ModelForm):
+class ContactoForm(forms.ModelForm):
 	class Meta:
 		model = Contacto
 		fields = ['numero']

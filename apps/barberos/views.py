@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import * 
-from .forms import RegistrarContacto
+from .forms import ContactoForm
 
 
 def index(request):
@@ -28,9 +28,8 @@ class BarberoDetail(generic.DetailView):
 		context['cuentas'] = Cuenta.objects.filter(barbero=barbero)
 		return context
 
-
 def crear_contacto(request, id_barbero):
-	form = RegistrarContacto(request.POST or None)
+	form = ContactoForm(request.POST or None)
 	barbero = Barbero.objects.get(pk=id_barbero)
 	context = {'form': form, 'barbero':barbero}
 	
@@ -40,14 +39,14 @@ def crear_contacto(request, id_barbero):
 			contacto = Contacto.objects.create(numero=numero, barbero=barbero)
 			return HttpResponseRedirect(reverse_lazy('barberos:barberos'))
 	else:
-		form = RegistrarContacto()
+		form = ContactoForm()
 
 	return render(request, 'barberos/contacto_form.html', context)
 
 
 class ContactoUpdate(generic.UpdateView):
 	model = Contacto
-	form_class = RegistrarContacto
+	form_class = ContactoForm
 	template_name = 'barberos/contacto_form.html'
 	context_object_name = 'contacto'
 	success_url = reverse_lazy('barberos:barberos')

@@ -50,4 +50,12 @@ class Horario(models.Model):
 		else:
 			nombre_dia = "Domingo"					 
 			
-		return nombre_dia	
+		return nombre_dia
+
+
+class Corte(models.Model):
+	nombre = models.CharField(max_length=40)
+	imagen = models.ImageField(upload_to='cortes')
+
+	def __str__(self):
+		return self.nombre			

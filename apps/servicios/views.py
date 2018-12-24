@@ -39,3 +39,9 @@ class HorarioList(generic.ListView):
 	model = Horario
 	context_object_name = "horarios"
 	template_name = "servicios/listar_horarios.html"
+
+
+class CortesListView(generic.ListView):
+	model = Corte
+	template_name = 'servicios/listar_cortes.html'
+	context_object_name = 'cortes'	
