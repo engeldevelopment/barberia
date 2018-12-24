@@ -12,7 +12,7 @@
 				</div>
 				<div class="card-body">
 					<div class="card-text">
-						<p> Estás apundo de eliminar este contacto <strong> {{contacto.numero}} </strong> ¿Estás seguro?</p>
+						<p> Estás apundo de eliminar este contacto <strong> {{ contacto.numero }} </strong> ¿Estás seguro?</p>
 					</div>	
 				</div>
 				<form action="{% url 'barberos:eliminar_contacto' contacto.pk %}" method="post" class="form-group">

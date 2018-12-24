@@ -3,13 +3,13 @@ from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import *
-from .forms import RegistrarServicio
+from .forms import ServicioForm
 
 
 class ServicioCreate(generic.CreateView):
 	model = Servicio
-	form_class = RegistrarServicio
-	template_name = 'servicios/registrar_servicio.html'
+	form_class = ServicioForm
+	template_name = 'servicios/servicio_form.html'
 	success_url = reverse_lazy('servicios:servicios') 	
 
 
@@ -22,8 +22,8 @@ class ServiciosList(generic.ListView):
 
 class ServicioUpdate(generic.UpdateView):
 	model = Servicio
-	form_class = RegistrarServicio
-	template_name = 'servicios/editar_servicio.html'
+	form_class = ServicioForm
+	template_name = 'servicios/servicio_form.html'
 	context_object_name = 'servicio'
 	success_url = reverse_lazy('servicios:servicios')
 

@@ -10,7 +10,7 @@
 			<h3> Contacto </h3>
 			<form method="post" class="form-group">
 				{% csrf_token %}
-				{{form | crispy }}
+				{{ form | crispy }}
 				<button type="submit" class="btn btn-outline-secondary"> <strong>Guardar</strong> </button>
 			</form>
 		</div>

@@ -2,7 +2,7 @@ from django import forms
 from .models import Servicio
 
 
-class RegistrarServicio(forms.ModelForm):
+class ServicioForm(forms.ModelForm):
 
 	class Meta:
 		model = Servicio
