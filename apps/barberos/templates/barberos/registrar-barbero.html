@@ -1,0 +1,18 @@
+{% extends 'web/index.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Registrar Barbero {% endblock %}
+
+{% block content %}
+	<div class="row offset-4">
+		<div class="col-md-7">
+			<h4> Registrar Barbero </h4>
+			<form action="{% url 'barberos:registrar' %}" method="post">
+				{% csrf_token %}
+				{{form | crispy }}
+				<button class="btn btn-secondary"> Guardar </button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

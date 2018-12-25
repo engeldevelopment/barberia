@@ -4,6 +4,12 @@
 {% block title %} Barberos {% endblock %}
 
 {% block content %}
+	
+	{% if user.is_superuser %}
+		<div class="row offset-2"> 
+			<a href="{% url 'barberos:registrar' %}" class="btn btn-link"> Nuevo </a>
+		</div>
+	{% endif %}
 
 	{% if barberos %}
 

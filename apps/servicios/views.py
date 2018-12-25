@@ -6,21 +6,21 @@ from .models import *
 from .forms import ServicioForm
 
 
-class ServicioCreate(generic.CreateView):
+class ServicioCreateView(generic.CreateView):
 	model = Servicio
 	form_class = ServicioForm
 	template_name = 'servicios/servicio_form.html'
 	success_url = reverse_lazy('servicios:servicios') 	
 
 
-class ServiciosList(generic.ListView):
+class ServiciosListView(generic.ListView):
 	model = Servicio
 	context_object_name = "servicios"
 	template_name = "servicios/listar_servicios.html"
 	queryset = Servicio.objects.all().order_by('-precio')
 
 
-class ServicioUpdate(generic.UpdateView):
+class ServicioUpdateView(generic.UpdateView):
 	model = Servicio
 	form_class = ServicioForm
 	template_name = 'servicios/servicio_form.html'
@@ -28,14 +28,14 @@ class ServicioUpdate(generic.UpdateView):
 	success_url = reverse_lazy('servicios:servicios')
 
 
-class ServicioDelete(generic.DeleteView):
+class ServicioDeleteView(generic.DeleteView):
 	model = Servicio
 	template_name = 'servicios/eliminar_servicio.html'
 	context_object_name = 'servicio'
 	success_url = reverse_lazy('servicios:servicios') 		
 
 
-class HorarioList(generic.ListView):
+class HorarioListView(generic.ListView):
 	model = Horario
 	context_object_name = "horarios"
 	template_name = "servicios/listar_horarios.html"
