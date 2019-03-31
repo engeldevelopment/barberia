@@ -17,7 +17,7 @@
 		<tbody>
 			{% for horario in horarios %}
 			<tr id="horarios">
-				<td> {{ horario.definir_dia }}</td>
+				<td> {{ horario.get_dia_display }}</td>
 				<td> {{ horario.hora_inicio }}</td>
 				<td> {{ horario.hora_fin }} </td>
 			</tr>
@@ -26,24 +26,14 @@
 	</table>
 	{% else %}
 		<div class="row">
-			<div class="col-md-5">
-				<h2> Disculpa! Aún no tenemos los horarios disponibles </h2>	
+			<div class="col">
+				<div class="card">
+					<div class="card-header text-center">
+						<h4> Disculpa! Aún no tenemos los horarios disponibles </h4>
+					</div>
+				</div>
 			</div>
 		</div>
 	{% endif %}
 
-{% endblock %}
-
-
-{% block card %}
-	<div class="card">
-		<div class="card-header">
-			<h2> Horario </h2>
-		</div>
-		<div class="card-body">
-			<div class="card-text">	
-				<p> Aquí encontraras todo acerca de nuestros días de trabajo y cada hora en la que estaremos disponibles </p>
-			</div>
-		</div>
-	</div>
 {% endblock %}

@@ -26,24 +26,24 @@ class BarberoDetail(generic.DetailView):
 		context = super().get_context_data(**kwargs)
 		barbero = Barbero.objects.get(pk=self.object.pk)
 		context['barbero'] = barbero
-		context['contactos'] = Contacto.objects.filter(barbero=barbero)
-		context['cuentas'] = Cuenta.objects.filter(barbero=barbero)
+		context['contactos'] = barbero.contacto_set.all()
+		context['cuentas'] = barbero.cuenta_set.all()
 		return context
 
+
 def crear_contacto(request, id_barbero):
-	form = ContactoForm(request.POST or None)
 	barbero = Barbero.objects.get(pk=id_barbero)
-	context = {'form': form, 'barbero':barbero}
 	
 	if request.method == 'POST':
+		form = ContactoForm(request.POST)
 		if form.is_valid():
 			numero = request.POST.get('numero')
 			contacto = Contacto.objects.create(numero=numero, barbero=barbero)
 			return HttpResponseRedirect(reverse_lazy('barberos:barberos'))
-	else:
-		form = ContactoForm()
 
-	return render(request, 'barberos/contacto_form.html', context)
+	form = ContactoForm(request.GET)
+
+	return render(request, 'barberos/contacto_form.html', {'form': form})
 
 
 class ContactoUpdate(generic.UpdateView):

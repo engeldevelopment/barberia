@@ -13,7 +13,6 @@ class Barbero(models.Model):
 	def get_absolute_url(self):
 		return reverse('barberos:detalle', kwargs={'pk':self.pk})
 
-
 	def __str__(self):
 		return "{nombre} ({apodo})".format(nombre=self.nombre,\
 			apodo=self.apodo)
