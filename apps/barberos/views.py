@@ -5,10 +5,6 @@ from .models import *
 from .forms import ContactoForm, BarberoForm
 
 
-def index(request):
-	return render(request, 'barberos/index.html')
-
-
 class BarberoCreateView(generic.CreateView):
 	model = Barbero	
 	template_name = 'barberos/registrar-barbero.html'

@@ -19,7 +19,7 @@
 			{% for contacto in contactos %}
 				<li class="list-group-item"> 
 					Teléfono: {{ contacto.numero }}
-				{% if user.is_authenticated and user.is_superuser %}
+				{% if user.is_superuser %}
 					<div class="btn-group">
 						<a href="{% url 'barberos:editar_contacto' contacto.pk %}" class="btn btn-link"> <i class="far fa-edit"></i></a>
 						<a href="{% url 'barberos:eliminar_contacto' contacto.pk %}" class="btn btn-link"> <i class="far fa-trash-alt"></i> </a>
@@ -38,7 +38,7 @@
 			{% for cuenta in cuentas %}
 				<li class="list-group-item"> 
 					Cuenta: {{ cuenta }} <br/>
-					Tipo: {{ cuenta.definir_tipo }} <br/>
+					Tipo: {{ cuenta.get_tipo_display }} <br/>
 					Cédula: {{ barbero.cedula }}
 				</li>
 			{% endfor %}
