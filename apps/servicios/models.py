@@ -29,28 +29,8 @@ class Horario(models.Model):
 	es_laborable = models.BooleanField(default = True)
 
 	def __str__(self):
-		return "{dia} de {inicio} a {fin}".format(dia=self.definir_dia(),\
+		return "{dia} de {inicio} a {fin}".format(dia=self.get_dia_display(),\
 			inicio=self.hora_inicio, fin=self.hora_fin)
-
-
-	def definir_dia(self):
-		nombre_dia = None
-		if self.dia == "LUN":
-			nombre_dia = "Lunes"
-		elif self.dia == "MAR":
-			nombre_dia = "Martes"
-		elif self.dia == "MIE":
-			nombre_dia = "Miércoles"
-		elif self.dia == "JUE":
-			nombre_dia = "Jueves"
-		elif self.dia == "VIE":
-			nombre_dia = "Viernes"
-		elif self.dia == "SAB":
-			nombre_dia = "Sábado"
-		else:
-			nombre_dia = "Domingo"					 
-			
-		return nombre_dia
 
 
 class Corte(models.Model):
@@ -58,4 +38,4 @@ class Corte(models.Model):
 	imagen = models.ImageField(upload_to='cortes')
 
 	def __str__(self):
-		return self.nombre			
+		return self.nombre

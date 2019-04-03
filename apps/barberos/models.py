@@ -10,10 +10,8 @@ class Barbero(models.Model):
 	apodo = models.CharField(max_length=30)
 	activo = models.BooleanField(default=True)
 
-
 	def get_absolute_url(self):
-		return reverse('barberos:detalle-barbero', kwargs={'pk':self.pk})
-
+		return reverse('barberos:detalle', kwargs={'pk':self.pk})
 
 	def __str__(self):
 		return "{nombre} ({apodo})".format(nombre=self.nombre,\
@@ -50,12 +48,3 @@ class Cuenta(models.Model):
 	def __str__(self):
 		return "{numero} ({banco})".format(numero=self.numero, \
 			banco=self.banco)
-
-	def definir_tipo(self):
-		nombre = None
-		if self.tipo == "A":
-			nombre = "Ahorro"
-		else:
-			nombre = "Corriente"
-
-		return nombre		
