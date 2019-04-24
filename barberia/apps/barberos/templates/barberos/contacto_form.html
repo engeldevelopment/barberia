@@ -1,18 +1,28 @@
 {% extends 'barberos/base.html' %}
 
-{% load crispy_forms_tags %}
-
-{% block title %} Barber's {% endblock %}
+{% block title %} {{ block.super }} - Contacto {% endblock %}
 
 {% block content %}
-	<div class="row offset-3">
-		<div class="col-md-5">
-			<h3> Contacto </h3>
-			<form method="post" class="form-group">
-				{% csrf_token %}
-				{{ form | crispy }}
+	<div class="row offset-md-3">
+	  <div class="col-12 col-sm-12 col-md-8 mt-4">
+		<div class="card">
+		  <div class="card-header">
+			{% if contacto %}
+			  <h4> Editar Contacto <i class="fa fa-phone"></i></h4>
+			{% else %}
+			  <h4> Nuevo Contacto <i class="fa fa-phone"></i></h4>
+			{% endif %}
+		  </div>
+		  <div class="card-body">
+			<form method="post" class="form-group"> {% csrf_token %}
+				<div class="form-group">
+				  <label> {{ form.numero.label }} </label>
+				  {{ form.numero }}
+				</div>
 				<button type="submit" class="btn btn-outline-secondary"> <strong>Guardar</strong> </button>
 			</form>
+		  </div>
 		</div>
+	  </div>
 	</div>
 {% endblock %}

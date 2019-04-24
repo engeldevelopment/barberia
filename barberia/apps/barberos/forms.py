@@ -6,7 +6,13 @@ class ContactoForm(forms.ModelForm):
 	class Meta:
 		model = Contacto
 		fields = ['numero']
-		labels = {'numero': 'Núemro',}
+		labels = {
+			'numero': 'Número telefónico',
+		}
+		
+		widgets = {
+			'numero': forms.TextInput(attrs={'class': 'form-control'})
+		}
 
 
 class BarberoForm(forms.ModelForm):
