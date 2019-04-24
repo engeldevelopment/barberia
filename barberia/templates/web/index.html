@@ -18,21 +18,23 @@
 			
 		{% include 'web/nav.html' %}
 
-		<div class="container m-4">
-		{% block content %}
+		<div class="row">
+		  <div class="col-12">	
+		  {% block content %}
 			
 			{% include 'web/carrusel.html' %}
 		
-		{% endblock %}
+		  {% endblock %}
+		  </div>
 		</div>
 		
 	</div>
 
-	{% block js %}
 	<script src="{% static 'web/js/jquery.min.js' %}"></script>
 	<script src="{% static 'web/js/popper.min.js' %}"></script>
 	<script src="{% static 'web/js/bootstrap.min.js' %}"></script>
-	<!--<script src="{% static 'web/js/nav.js' %}"></script>-->
+
+	{% block js %}
 	{% endblock %}
 </body>
 </html>

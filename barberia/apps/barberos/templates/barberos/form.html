@@ -1,8 +1,8 @@
-{% extends 'web/index.html' %}
+{% extends 'barberos/base.html' %}
 
 {% load crispy_forms_tags %}
 
-{% block title %} Registrar Barbero {% endblock %}
+{% block title %} {{ block.super }} - Registrar {% endblock %}
 
 {% block content %}
 	<div class="row offset-4">
