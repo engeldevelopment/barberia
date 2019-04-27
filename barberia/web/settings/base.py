@@ -115,7 +115,7 @@ USE_TZ = True
 STATICFILES_DIRS = [dir_root('static')]
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = [dir_root('static'), dir_root('media')]
+MEDIA_ROOT = dir_root('media')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'servicios:servicios'

@@ -1,16 +1,19 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Barbero, Contacto 
 from .forms import ContactoForm, BarberoForm, UserForm
 
 
-class BarberoCreateView(LoginRequiredMixin, generic.CreateView):
+class BarberoCreateView(PermissionRequiredMixin,
+						LoginRequiredMixin, 
+						generic.CreateView):
 	model = Barbero	
 	template_name = 'barberos/form.html'
 	form_class = BarberoForm
 	second_form_class = UserForm
+	permission_required = ('barberos.add_barbero',)
 	success_url = reverse_lazy('barberos:barberos')
 
 	def get_context_data(self, *args, **kwargs):
