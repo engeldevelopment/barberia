@@ -3,14 +3,41 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Barbero, Contacto 
-from .forms import ContactoForm, BarberoForm
+from .forms import ContactoForm, BarberoForm, UserForm
 
 
 class BarberoCreateView(LoginRequiredMixin, generic.CreateView):
 	model = Barbero	
 	template_name = 'barberos/form.html'
 	form_class = BarberoForm
+	second_form_class = UserForm
 	success_url = reverse_lazy('barberos:barberos')
+
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		if not 'barber_form' in context:
+			context['barber_form'] = self.form_class
+		
+		if not 'user_form' in context:
+			context['user_form'] = self.second_form_class
+
+		return context
+
+	def post(self, request):
+		barber_form = self.form_class(request.POST)
+		user_form = self.second_form_class(request.POST)	
+
+		if barber_form.is_valid() and user_form.is_valid():
+			usuario = user_form.save()
+			barbero = barber_form.save(commit=False)
+			barbero.usuario = usuario
+			barbero.save()
+			return HttpResponseRedirect(self.success_url)
+
+		return render(request, 
+					self.template_name, 
+					{'user_form': user_form, 'barber_form': barber_form })	
 
 
 class BarberoList(generic.ListView):

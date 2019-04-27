@@ -11,11 +11,9 @@
 		<h4> {{ barbero }}</h4>
 	  </div>
 	  <div class="card-body"> 
+		<h5> Contactos </h5>	 
 		{% if contactos %} 
 		<ul class="list-group">
-		  <div> 
-		    <h5> Contactos </h5>	 
-		  </div>
 		  {% for contacto in contactos %}
 			  <li class="list-group-item"> 
 				{{ contacto.numero }} <i class="fa fa-phone"></i>

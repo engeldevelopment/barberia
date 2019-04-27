@@ -1,12 +1,11 @@
-
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 class Barbero(models.Model):
 	cedula = models.CharField(max_length=10, unique=True)
-	nombre = models.CharField(max_length=30)
-	apellido = models.CharField(max_length=30)
+	usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 	apodo = models.CharField(max_length=30)
 	activo = models.BooleanField(default=True)
 
@@ -14,7 +13,7 @@ class Barbero(models.Model):
 		return reverse('barberos:detalle', kwargs={'pk':self.pk})
 
 	def __str__(self):
-		return "{nombre} ({apodo})".format(nombre=self.nombre,\
+		return "{nombre} ({apodo})".format(nombre=self.usuario.first_name,\
 			apodo=self.apodo)
 
 

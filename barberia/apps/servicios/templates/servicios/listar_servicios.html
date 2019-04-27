@@ -1,4 +1,3 @@
-
 {% extends 'servicios/base.html' %}
 
 {% block title %} {{ block.super }} - Lista {% endblock %}
@@ -6,13 +5,11 @@
 {% block content %}
 <div class="row">
   <div class="col-12 mt-4">
-
   	{% if user.is_superuser %}
 		<a href="{% url 'servicios:crear_servicio' %}" class="btn btn-link"><i class="fas fa-plus"></i></a>
 	{% endif %}
 
 	{% if servicios %}
-	
 		<table class="table table-hover tabla">
 			<thead>
 				<tr>
@@ -41,10 +38,9 @@
 		</table>
 	
 	{% else %}
-		<div class="alert alert-info">
+		<div class="alert alert-dark">
 		  <h2> Disculpa! Aún no tenemos los servicios disponibles </h2>	
 		</div>
-	
 	{% endif %}
   </div>	
 </div>

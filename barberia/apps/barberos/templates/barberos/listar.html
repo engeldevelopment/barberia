@@ -1,43 +1,38 @@
-
 {% extends 'barberos/base.html' %}
 
 {% block content %}
 <div class="row">
   <div class="col-12 col-sm-12">
-  	{% if barberos %}
 
-		{% for barbero in barberos %}
-		<div class="row offset-md-3">
-		  <div class="col-12 col-sm-12 col-md-8 mt-4">
-			<div class="card">
-			  <div class="card-header">
-				<h5> Barber: {{ barbero }} </h5>
-			  </div>
-			  <div class="card-body">
-				<div class="card-text">	
-				  <div class="row col-md-2">
-					<p> Estado:  	
-						{% if barbero.activo %}
-							<i class="fas fa-toggle-on"></i>
-						{% else %}
-							<i class="fas fa-toggle-off"></i>
-						{% endif %}
-				    </p>
-				  </div>
-				</div>
-			  </div>
-			  <div class="card-footer">
-				<a href="{{ barbero.get_absolute_url }}"> Ver <i class="fa fa-eye"></i></a>
-			  </div>
-		  </div>	
+	{% for barbero in barberos %}
+	<div class="row offset-md-3">
+	  <div class="col-12 col-sm-12 col-md-8 mt-4">
+		<div class="card">
+		  <div class="card-header">
+		    <h5> Barber: {{ barbero }} </h5>
+		  </div>
+		  <div class="card-body">
+		    <div class="card-text">	
+			  <p> Estado:  	
+				 {% if barbero.activo %}
+				   <i class="fas fa-toggle-on"></i>
+				 {% else %}
+					<i class="fas fa-toggle-off"></i>
+				 {% endif %}
+			  </p> 
+			</div>
+		  </div>
+		  <div class="card-footer">
+		    <a href="{{ barbero.get_absolute_url }}"> Ver <i class="fa fa-eye"></i></a>
+		  </div>
 		</div>	
-		{% endfor %}
-	
-	{% else %}
-		<div class="alert alert-info">	
-		  <h2> Disculpa! Aún no tenemos los barberos disponibles </h2>	
-		</div>
-	{% endif %}
-  </div>	
+	  </div>
+	</div>
+	{% empty %}
+	<div class="alert alert-info">	
+	  <h2> Disculpa! Aún no tenemos los barberos disponibles </h2>	
+	</div>	
+	{% endfor %}
+  </div>
 </div>
 {% endblock %}
