@@ -50,12 +50,12 @@
 		{% endif %}
 	  </div>
 	  <div class="card-footer">
-		{% if user.is_superuser %}
 		<div class="btn-group">
+		  {% if user.is_superuser %}
 		  <a href="{% url 'barberos:crear_contacto' barbero.pk %}" class="btn btn-link"> Add Contacto</a>
+		  {% endif %}
 		  <a href="{% url 'barberos:barberos' %}" class="btn btn-link"> Atrás</a>
 		</div>
-		{% endif %}
 	  </div>
 	</div>
   </div>

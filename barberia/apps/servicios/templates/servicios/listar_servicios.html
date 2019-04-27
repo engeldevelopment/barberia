@@ -1,14 +1,14 @@
 
-{% extends 'web/index.html' %}
+{% extends 'servicios/base.html' %}
 
-{% block title %} Servicios {% endblock %}
+{% block title %} {{ block.super }} - Lista {% endblock %}
 
 {% block content %}
-	
-	{% if user.is_superuser %}
-		<div class="row col-md-2">
-			<a href="{% url 'servicios:crear_servicio' %}" class="btn btn-link"><i class="fas fa-plus"></i></a>
-		</div>
+<div class="row">
+  <div class="col-12 mt-4">
+
+  	{% if user.is_superuser %}
+		<a href="{% url 'servicios:crear_servicio' %}" class="btn btn-link"><i class="fas fa-plus"></i></a>
 	{% endif %}
 
 	{% if servicios %}
@@ -41,11 +41,11 @@
 		</table>
 	
 	{% else %}
-		<div class="row col-md-5 offset-3">
-			<div class="col-md-5">
-				<h2> Disculpa! Aún no tenemos los servicios disponibles </h2>	
-			</div>
+		<div class="alert alert-info">
+		  <h2> Disculpa! Aún no tenemos los servicios disponibles </h2>	
 		</div>
+	
 	{% endif %}
-
+  </div>	
+</div>
 {% endblock %}

@@ -2,8 +2,9 @@
 {% extends 'barberos/base.html' %}
 
 {% block content %}
-
-	{% if barberos %}
+<div class="row">
+  <div class="col-12 col-sm-12">
+  	{% if barberos %}
 
 		{% for barbero in barberos %}
 		<div class="row offset-md-3">
@@ -33,11 +34,10 @@
 		{% endfor %}
 	
 	{% else %}
-		<div class="row offset-md-3">
-			<div class="col-12 col-md-8">
-				<h2> Disculpa! Aún no tenemos los barberos disponibles </h2>	
-			</div>
+		<div class="alert alert-info">	
+		  <h2> Disculpa! Aún no tenemos los barberos disponibles </h2>	
 		</div>
 	{% endif %}
-
+  </div>	
+</div>
 {% endblock %}

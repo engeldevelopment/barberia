@@ -11,3 +11,8 @@ class ServicioForm(forms.ModelForm):
 			'descripcion': 'Descripción',
 			'precio': 'Precio',
 		}
+		widgets = {
+			'descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+			'precio': forms.NumberInput(attrs={'class': 'form-control'}),	
+		}
+
