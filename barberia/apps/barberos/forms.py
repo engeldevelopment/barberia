@@ -16,12 +16,13 @@ class ContactoForm(forms.ModelForm):
 
 
 class BarberoForm(forms.ModelForm):
+
 	class Meta:
 		model = Barbero
 		fields = ['cedula', 'nombre', 'apellido', 'apodo']
 		labels = {
-			'cedula': 'Cédula:',
-			'nombre': 'Nombre:',
-			'apellido': 'Apellido:',
-			'Apodo': 'Apodo:'
+			'cedula': 'Cédula',
+			'nombre': 'Nombre',
+			'apellido': 'Apellido',
+			'Apodo': 'Apodo'
 		}

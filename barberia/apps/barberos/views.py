@@ -1,11 +1,12 @@
 from django.shortcuts import render, HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Barbero, Contacto 
 from .forms import ContactoForm, BarberoForm
 
 
-class BarberoCreateView(generic.CreateView):
+class BarberoCreateView(LoginRequiredMixin, generic.CreateView):
 	model = Barbero	
 	template_name = 'barberos/form.html'
 	form_class = BarberoForm
