@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>{% block title %} BarberCachet's {% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'web/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'web/css/index.css' %}">
+	<link rel="stylesheet" href="{% static 'web/css/all.min.css' %}">
+</head>
+<body>
+	<main class="container-fluid">
+		<div class="row">
+		  <div class="col-12">
+		    {% include 'web/nav.html' %}
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-12 mt-5">
+			<section id="contenido">  	
+			  {% block content %}
+				
+				{% include 'web/carrusel.html' %}
+			
+			  {% endblock %}
+			</section>
+		  </div>	
+		</div>	
+
+		{% include 'web/footer.html' %}
+		
+	</main>
+
+	<script src="{% static 'web/js/jquery.min.js' %}"></script>
+	<script src="{% static 'web/js/popper.min.js' %}"></script>
+	<script src="{% static 'web/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'web/js/all.min.js' %}"></script>
+
+	{% block js %}
+	{% endblock %}
+</body>
+</html>

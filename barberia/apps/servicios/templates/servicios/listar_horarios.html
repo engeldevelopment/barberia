@@ -1,0 +1,35 @@
+
+{% extends 'servicios/base.html' %}
+
+{% block title %} {{ block.super }} - Horario {% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12 mt-4">
+	{% if horarios %}
+	<table class="table table-hover tabla">
+		<thead>
+			<tr>
+				<th> Día </th>
+				<th> Desde </th>
+				<th> Hasta </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for horario in horarios %}
+			<tr id="horarios">
+				<td> {{ horario.get_dia_display }}</td>
+				<td> {{ horario.hora_inicio }}</td>
+				<td> {{ horario.hora_fin }} </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+		<div class="alert alert-dark">
+		  <h4> Disculpa! Aún no tenemos los horarios disponibles </h4>
+		</div>
+	{% endif %}
+  </div>	
+</div>
+{% endblock %}

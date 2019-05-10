@@ -1,0 +1,29 @@
+{% extends 'servicios/base.html' %}
+
+{% block title %} {{ block.super }} - Eliminar {% endblock %}
+
+{% block content %}
+<div class="row offset-md-3">
+  <div class="col-12 col-sm-12 col-md-8 mt-4">
+	<div class="card">
+	  <div class="card-header">
+		<h3> Aviso!</h3>
+	  </div>
+	  <div class="card-body">
+		<div class="card-text">
+		  <p> Estás apundo de eliminar este servicio <strong> {{ servicio }} </strong> ¿Estás seguro?</p>
+		</div>	
+	   </div>
+	   <div class="card-body">
+		  <form action="{% url 'servicios:eliminar_servicio' servicio.pk %}" method="post"> {% csrf_token %}
+
+			<div class="btn-group">	
+			  <button type="submit" class="btn btn-outline-danger"> <strong>Sí, seguro!</strong> </button>
+			  <a href="{% url 'servicios:servicios' %}" class="btn btn-outline-secondary"> Atrás </a>
+			</div>	
+		  </form>
+	   </div>
+	</div>   
+  </div>
+</div>
+{% endblock %}

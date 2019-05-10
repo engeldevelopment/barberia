@@ -1,0 +1,54 @@
+#contenido {
+	background: #F1F1F1;
+	height: 800px;
+}
+
+.card-header {
+	background: #343a40;
+	color: #FFFFFF;
+}
+
+footer {
+	background: #343a40;
+	color: #FFFFFF;
+	height: 400px;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+@media screen and (max-width: 572px) {
+	footer {
+		height: auto;	
+	}
+}
+
+#horarios:hover {
+	color: #FFFFFF;
+	background: #B90707;
+	font-weight: bold;	
+}
+
+#menu a {
+	color: #FFFFFF;
+}
+
+#menu a:hover {
+	color: #FFFFFF;
+	background: #B90707;
+	font-weight: bold;
+}
+
+#servicios:hover {
+	color: #FFFFFF;
+	background: #B90707;
+	font-weight: bold;	
+}
+
+.title {
+	color: #B90707;
+	font-weight: bold;
+}
+
+.tabla {
+	background: #FFFFFF;
+}

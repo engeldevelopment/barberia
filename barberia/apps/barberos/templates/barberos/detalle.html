@@ -1,0 +1,61 @@
+{% extends 'barberos/base.html' %}
+
+{% block title %} {{ block.super }} - Detalle {% endblock %}
+
+{% block content %}
+
+<div class="row offset-md-3">
+  <div class="col-12 col-sm-12 col-md-8 mt-4">
+	<div class="card">
+	  <div class="card-header">
+		<h4> {{ barbero }}</h4>
+	  </div>
+	  <div class="card-body"> 
+		<h5> Contactos </h5>	 
+		{% if contactos %} 
+		<ul class="list-group">
+		  {% for contacto in contactos %}
+			  <li class="list-group-item"> 
+				{{ contacto.numero }} <i class="fa fa-phone"></i>
+
+				{% if user.is_superuser %}
+					<div class="btn-group">
+						<a href="{% url 'barberos:editar_contacto' contacto.pk %}" class="btn btn-link"> <i class="far fa-edit"></i></a>
+						<a href="{% url 'barberos:eliminar_contacto' contacto.pk %}" class="btn btn-link"> <i class="far fa-trash-alt"></i> </a>
+					</div>
+				{% endif %} 
+			  </li>
+		   {% endfor %}
+		</ul>
+		{% else %}
+			<h5> No tiene </h5>
+		{% endif %}
+	  </div>
+	  <div class="card-body">
+		<h5> Cuentas </h5>
+		{% if cuentas %}
+			<ul class="list-group">
+				{% for cuenta in cuentas %}
+					<li class="list-group-item"> 
+						Cuenta: {{ cuenta }} <br/>
+						Tipo: {{ cuenta.get_tipo_display }} <br/>
+						Cédula: {{ barbero.cedula }}
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<h5> No tiene </h5>
+		{% endif %}
+	  </div>
+	  <div class="card-footer">
+		<div class="btn-group">
+		  {% if user.is_superuser %}
+		  <a href="{% url 'barberos:crear_contacto' barbero.pk %}" class="btn btn-link"> Add Contacto</a>
+		  {% endif %}
+		  <a href="{% url 'barberos:barberos' %}" class="btn btn-link"> Atrás</a>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+{% endblock %}

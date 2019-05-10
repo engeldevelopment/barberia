@@ -1,0 +1,49 @@
+{% extends 'barberos/base.html' %}
+
+{% block title %} {{ block.super }} - Registrar {% endblock %}
+
+{% block content %}
+<div class="row offset-md-3">
+  <div class="col-12 col-sm-12 col-md-8 mt-4">
+	<div class="card">
+	  <div class="card-header">
+		<h4> Registrar Barbero </h4>
+	  </div>
+	  <div class="card-body">
+		<form action="" method="post"> {% csrf_token %}
+		  
+		  {% for field in barber_form %}
+		  <div class="form-group">
+		  	{{ field.label_tag }}
+		  	{{ field }}
+		  </div>
+		  {% endfor %}
+		  
+		  <div class="form-group">
+		  	<label> Usuario </label>
+		  	<input type="text" name="username" class="form-control">
+		  </div>
+		  <div class="form-group">
+		  	<label> Nombre </label>
+		  	<input type="text" name="first_name" class="form-control">
+		  </div>
+		  <div class="form-group">
+		  	<label> Apellidos </label>
+		  	<input type="text" name="last_name" class="form-control">
+		  </div>
+		  <div class="form-group">
+		  	<label> Contraseña </label>
+		  	<input type="password" name="password1" class="form-control">
+		  </div>
+		  <div class="form-group">
+		  	<label> Confirmación (Constraseña) </label>
+		  	<input type="password" name="password2" class="form-control">
+		  </div>
+
+		  <button class="btn btn-dark" type="submit"> Guardar </button>
+		</form>
+	  </div>	
+	</div>	
+  </div>
+</div>
+{% endblock %}
