@@ -1,20 +1,39 @@
 .alert-primary {
-	background: #820101;
+	background: #810D36;
+	color: #FFFFFF;
+}
+
+.btn {
+	border: none;
+}
+
+.btn-primary {
+	background: #810D36;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.btn-primary:hover {
+	background: #981C48;
+	color: #FFFFFF;
+}
+
+.bg-primary {
+	background: #810D36 !important;
 	color: #FFFFFF;
 }
 
 #contenido {
-	background: #F1F1F1;
 	height: 800px;
 }
 
 .card-header {
-	background: #343a40;
+	background: #810D36;
 	color: #FFFFFF;
 }
 
 footer {
-	background: #343a40;
+	background: #810D36;
 	color: #FFFFFF;
 	height: 400px;
 	padding: 20px;
@@ -25,11 +44,15 @@ footer {
 	footer {
 		height: auto;	
 	}
+
+	#contenido {
+		height: auto;
+	}
 }
 
 #horarios:hover {
 	color: #FFFFFF;
-	background: #B90707;
+	background: #810D36;
 	font-weight: bold;	
 }
 
@@ -39,13 +62,22 @@ footer {
 
 #menu a:hover {
 	color: #FFFFFF;
-	background: #B90707;
+	background: #420B1E;
 	font-weight: bold;
+	border-radius: 80%;
+}
+
+.navbar-brand {
+	color: #FFFFFF;
+}
+
+.navbar-brand:hover {
+	color: #FFFFFF;
 }
 
 #servicios:hover {
 	color: #FFFFFF;
-	background: #B90707;
+	background: #810D36;
 	font-weight: bold;	
 }
 

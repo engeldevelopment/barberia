@@ -17,19 +17,16 @@
 		  </div>
 		</div>
 		<div class="row">
-		  <div class="col-12 mt-5">
-			<section id="contenido">  	
-			  {% block content %}
+		  <div class="col-12 mt-5" id="contenido">
+			{% block content %}
 				
-				{% include 'web/carrusel.html' %}
+			  {% include 'web/carrusel.html' %}
 			
-			  {% endblock %}
-			</section>
+			{% endblock %}
 		  </div>	
 		</div>	
 
 		{% include 'web/footer.html' %}
-		
 	</main>
 
 	<script src="{% static 'web/js/jquery.min.js' %}"></script>
