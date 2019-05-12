@@ -1,3 +1,8 @@
+.alert-primary {
+	background: #820101;
+	color: #FFFFFF;
+}
+
 #contenido {
 	background: #F1F1F1;
 	height: 800px;

@@ -3,7 +3,7 @@
 {% block title %} {{ block.super }} - Cortes {% endblock %}
 
 {% block content %} 
-  <div class="row">
+  <div class="row offset-md-3">
   {% for corte in cortes %}
     <div class="col-12 col-sm-12 col-md-4 mt-4">
 	  <figure class="figure">
@@ -13,9 +13,13 @@
 	  </figure>
 	</div>
    {% empty %}
-	<div class="alert alert-dark">
-	  <h4> Upps! Aún no hemos cargado los cortes </h4>
-	</div>
+     <div class="col-12 col-md-8 mt-4">
+		<div class="alert alert-primary">
+		  <h4 class="alert-heading"> Upps! Disculpa</h4>
+		  <p>Aún no tenemos disponibles los cortes. Cargaremos esta información lo antes posible.
+			  </p>
+		</div>
+     </div>
    {% endfor %}
    </div>
 {% endblock %}

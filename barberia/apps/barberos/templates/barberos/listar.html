@@ -1,37 +1,43 @@
 {% extends 'barberos/base.html' %}
 
 {% block content %}
-<div class="row">	
-  <div class="col-12 col-sm-12">
-	{% for barbero in barberos %}
-	<div class="row offset-md-3">
-	  <div class="col-12 col-sm-12 col-md-8 mt-4">
-		<div class="card">
-		  <div class="card-header">
-		    <h5> Barber: {{ barbero }} </h5>
-		  </div>
-		  <div class="card-body">
-		    <div class="card-text">	
-			  <p> Estado:  	
-				 {% if barbero.activo %}
+
+  {% for barbero in barberos %}
+  <div class="row offset-md-3">
+	<div class="col-12 col-sm-12 col-md-8 mt-4">
+	  <div class="card">
+		<div class="card-header">
+		  <h5> Barber: {{ barbero }} </h5>
+		</div>
+		<div class="card-body">
+		  <div class="card-text">	
+			<p> Estado:  	
+				{% if barbero.activo %}
 				   <i class="fas fa-toggle-on"></i>
-				 {% else %}
+				{% else %}
 					<i class="fas fa-toggle-off"></i>
-				 {% endif %}
-			  </p> 
-			</div>
+				{% endif %}
+			</p> 
 		  </div>
-		  <div class="card-footer">
-		    <a href="{{ barbero.get_absolute_url }}"> Ver <i class="fa fa-eye"></i></a>
-		  </div>
-		</div>	
-	  </div>
+		</div>
+		<div class="card-footer">
+		  <a href="{{ barbero.get_absolute_url }}"> Ver <i class="fa fa-eye"></i></a>
+		  {% if user.is_superuser %}
+		  <a href="{% url 'barberos:eliminar' barbero.pk %}"> Eliminar <i class="fa fa-trash"></i></a>
+		  {% endif %}
+		</div>
+	  </div>	
 	</div>
-	{% empty %}
-	<div class="alert alert-info">	
-	  <h2> Disculpa! Aún no tenemos los barberos disponibles </h2>	
-	</div>	
-	{% endfor %}
   </div>
-</div>
+  {% empty %}
+  <div class="row offset-md-3">
+    <div class="col-12 col-md-8 mt-4">
+      <div class="alert alert-primary">
+	    <h4 class="alert-heading"> Upps! Disculpa</h4>
+	    <p>Aún no hemos cargado los barberos! Trataremos de cargar esta información lo antes posible.
+		  </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 {% endblock %}

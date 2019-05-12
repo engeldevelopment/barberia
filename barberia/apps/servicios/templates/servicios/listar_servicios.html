@@ -3,45 +3,55 @@
 {% block title %} {{ block.super }} - Lista {% endblock %}
 
 {% block content %}
-<div class="row">
-  <div class="col-12 mt-4">
-  	{% if user.is_superuser %}
-		<a href="{% url 'servicios:crear_servicio' %}" class="btn btn-link"><i class="fas fa-plus"></i></a>
-	{% endif %}
 
-	{% if servicios %}
-		<table class="table table-hover tabla">
-			<thead>
-				<tr>
-					<th> Servicios</th>
-					<th> Precios </th>
-					{% if user.is_superuser %}
-					<th> Acciones </th>
-					{% endif %}
-				</tr>
-			</thead>
-			<tbody>
-				{% for servicio in servicios %}
-				<tr id="servicios">
-					<td> {{ servicio.descripcion }}</td>
-					<td> {{ servicio.precio |floatformat}} Bs.S </td>
-					{% if user.is_superuser %}
-						<td>
-							<a href="{% url 'servicios:editar_servicio' servicio.pk %}" class="btn btn-link"><i class="far fa-edit"></i></a>
-
-							<a href="{% url 'servicios:eliminar_servicio' servicio.pk %}" class="btn btn-link"> <i class="far fa-trash-alt"></i> </a>
-						</td>
-					{% endif %}
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	
-	{% else %}
-		<div class="alert alert-dark">
-		  <h2> Disculpa! Aún no tenemos los servicios disponibles </h2>	
-		</div>
-	{% endif %}
+  {% if user.is_superuser %}	
+  <div class="row offset-md-3">
+    <div class="col-12 col-md-8 mt-3">
+      <a href="{% url 'servicios:registrar' %}" class="btn btn-light"> <i class="fa fa-plus"></i> Add</a>
+    </div>  	
   </div>	
+  {% endif %}
+
+{% if servicios %}
+<div class="row offset-md-3">
+  <div class="col-12 col-md-8 mt-4">	
+    <table class="table table-hover tabla">
+      <thead>
+	    <tr>
+		  <th> Servicios</th>
+	      <th> Precios </th>
+		  {% if user.is_superuser %}
+		  <th> Acciones </th>
+		  {% endif %}
+	    </tr>
+	  </thead>
+	  <tbody>
+	  {% for servicio in servicios %}
+	    <tr id="servicios">
+	      <td> {{ servicio.descripcion }}</td>
+	      <td> {{ servicio.precio |floatformat}} Bs.S </td>
+		  {% if user.is_superuser %}
+		  <td>
+		    <a href="{% url 'servicios:editar_servicio' servicio.pk %}" class="btn btn-link"><i class="far fa-edit"></i></a>
+
+		    <a href="{% url 'servicios:eliminar_servicio' servicio.pk %}" class="btn btn-link"> <i class="far fa-trash-alt"></i> </a>
+		  </td>
+		  {% endif %}
+	    </tr>
+	  {% endfor %}
+	  </tbody>
+    </table>	
+  </div>
+</div>  
+{% else %}
+<div class="row">	
+  <div class="col-12 col-md-8 mt-4">
+    <div class="alert alert-primary">
+	  <h4 class="alert-heading"> Upps! Disculpa</h4>
+	  <p>Aún no hemos cargado el precio de los servicios que le ofrecemos. Cargaremos esta información lo antes posible.</p>
+	</div>
+  </div>
 </div>
+{% endif %}	
+
 {% endblock %}

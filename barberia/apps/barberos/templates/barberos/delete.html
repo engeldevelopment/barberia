@@ -1,0 +1,26 @@
+{% extends 'barberos/base.html' %}
+
+{% block title %} {{ block.super }} - Confirmar eliminación {% endblock %}
+
+{% block content %}
+<div class="row offset-md-3">
+  <div class="col-12 col-md-8 mt-4">
+  	<div class="card">
+  	  <div class="card-header">
+  	  	<h4>Aviso!</h4>
+  	  </div>
+  	  <div class="card-body">
+	  	<form method="POST" action=""> {% csrf_token %}
+	  	  <div class="card-text">
+	  	    <p> Estas apunto de eliminar al barbero {{ barbero }}. ¿Deseas continuar?</p>
+	  	  </div>
+	  	  <div class="btn-group">
+	  	    <button type="submit" class="btn btn-outline-danger"> Sí, seguro!</button>	
+	  	  	<a href="{% url 'barberos:barberos' %}" class="btn btn-outline-secondary"> Atrás </a>
+	  	  </div>
+	  	</form>
+  	  </div>	
+  	</div>
+  </div>	
+</div>
+{% endblock %}

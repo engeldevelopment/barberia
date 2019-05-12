@@ -16,9 +16,30 @@
 		  <div class="form-group">
 		  	{{ field.label_tag }}
 		  	{{ field }}
+		  	
+		  	{% if field.errors %}
+		  	 
+		  	 {% for error in field.errors %}
+			  <small class="text-danger form-text"> {{ error }} </small>
+		  	 {% endfor %}
+
+		  	{% endif %}
 		  </div>
 		  {% endfor %}
-		  
+		  <hr/>
+
+		  {% for field in user_form %}
+		  <div class="form-group">
+		  	{% if field.errors %}
+		  	 
+		  	 {% for error in field.errors %}
+			  <small class="text-danger form-text"> {{ error }} </small>
+		  	 {% endfor %}
+
+		  	{% endif %}
+		  </div>
+		  {% endfor %}	
+
 		  <div class="form-group">
 		  	<label> Usuario </label>
 		  	<input type="text" name="username" class="form-control">

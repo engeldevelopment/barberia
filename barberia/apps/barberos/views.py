@@ -1,5 +1,6 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Barbero, Contacto 
@@ -62,6 +63,20 @@ class BarberoDetail(generic.DetailView):
 		return context
 
 
+class BarberoDeleteView(generic.DeleteView):
+	model = Barbero
+	template_name = 'barberos/delete.html'
+	context_object_name = 'barbero'
+	success_url = reverse_lazy('barberos:barberos')
+
+	def post(self, request, pk):
+		barbero = Barbero.objects.get(pk=pk)
+		usuario = User.objects.get(username=barbero.usuario)
+		usuario.delete()
+		barbero.delete()
+		return HttpResponseRedirect(self.success_url)		
+
+
 def crear_contacto(request, id_barbero):
 	barbero = Barbero.objects.get(pk=id_barbero)
 	
@@ -70,7 +85,7 @@ def crear_contacto(request, id_barbero):
 		if form.is_valid():
 			numero = request.POST.get('numero')
 			contacto = Contacto.objects.create(numero=numero, barbero=barbero)
-			return HttpResponseRedirect(reverse_lazy('barberos:barberos'))
+			return redirect(barbero)
 
 	form = ContactoForm(request.GET)
 
