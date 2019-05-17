@@ -6,7 +6,6 @@ $('#cambiar-status').click((e) => {
 
 		addClassAStatus(data.status, data.pk);
 		alert(`Haz cambiado tu estado a ${getStatus(data.status)}`);
-		console.log(data);
 	});
 });
 
