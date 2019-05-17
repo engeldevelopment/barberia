@@ -16,6 +16,10 @@ class Barbero(models.Model):
 		return "{nombre} ({apodo})".format(nombre=self.usuario.first_name,\
 			apodo=self.apodo)
 
+	def cambiar_status(self):
+		self.activo = not self.activo
+		return self.activo
+
 
 class Contacto(models.Model):
 	numero = models.CharField(max_length=15)

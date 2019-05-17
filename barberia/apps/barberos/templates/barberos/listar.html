@@ -1,5 +1,7 @@
 {% extends 'barberos/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
   {% for barbero in barberos %}
@@ -13,18 +15,28 @@
 		  <div class="card-text">	
 			<p> Estado:  	
 				{% if barbero.activo %}
-				   <i class="fas fa-toggle-on"></i>
+				   <i class="fas fa-toggle-on" id="status-{{ barbero.pk }}"></i>
 				{% else %}
-					<i class="fas fa-toggle-off"></i>
+					<i class="fas fa-toggle-off" id="status-{{ barbero.pk }}"></i>
 				{% endif %}
 			</p> 
 		  </div>
 		</div>
 		<div class="card-footer">
-		  <a href="{{ barbero.get_absolute_url }}"> Ver <i class="fa fa-eye"></i></a>
-		  {% if user.is_superuser %}
-		  <a href="{% url 'barberos:eliminar' barbero.pk %}"> Eliminar <i class="fa fa-trash"></i></a>
-		  {% endif %}
+		  <div class="btn-group">
+		  	
+			<a href="{{ barbero.get_absolute_url }}" class="btn btn-light"> <i class="fa fa-eye"></i></a>
+
+			{% if user.is_authenticated and user == barbero.usuario %}
+			  <form action="{% url 'barberos:cambiar_status' barbero.pk %}" method="POST" id="form-cambiar-status"> {% csrf_token %}
+			    <button type="submit" class="btn btn-success" id="cambiar-status"> Cambiar Status </button>
+			  </form>
+			{% endif %}
+
+			{% if user.is_superuser %}
+			  <a href="{% url 'barberos:eliminar' barbero.pk %}" class="btn-light"> Eliminar <i class="fa fa-trash"></i></a>
+			{% endif %}
+		  </div>  			
 		</div>
 	  </div>	
 	</div>
@@ -40,4 +52,8 @@
     </div>
   </div>
   {% endfor %}
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'barberos/js/cambiar_status.js' %}"></script>
 {% endblock %}

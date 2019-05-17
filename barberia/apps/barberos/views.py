@@ -1,4 +1,6 @@
+from django.http import JsonResponse
 from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views import generic
@@ -42,6 +44,17 @@ class BarberoCreateView(PermissionRequiredMixin,
 		return render(request, 
 					self.template_name, 
 					{'user_form': user_form, 'barber_form': barber_form })	
+
+
+class BarberoCambiarStatus(LoginRequiredMixin, 
+							generic.View):
+
+	def post(self, request, pk):
+		barbero = get_object_or_404(Barbero, pk=pk)
+		barbero.cambiar_status()
+		barbero.save()
+
+		return JsonResponse({'status': barbero.activo, 'pk': pk}, status=200)
 
 
 class BarberoList(generic.ListView):
