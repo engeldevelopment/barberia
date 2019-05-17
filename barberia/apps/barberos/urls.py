@@ -4,7 +4,7 @@ from . import views
 app_name = "barberos"
 
 urlpatterns = [
-	path('', views.BarberoList.as_view(), name="barberos"),
+	path('', views.BarberoList.as_view(), name="index"),
 	path('registrar/', views.BarberoCreateView.as_view(), name='registrar'),
 	path('<int:pk>/detalle', views.BarberoDetail.as_view(), name="detalle"),
 	path('<int:pk>/eliminar', views.BarberoDeleteView.as_view(), name="eliminar"),

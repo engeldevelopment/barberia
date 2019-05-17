@@ -17,7 +17,7 @@ class BarberoCreateView(PermissionRequiredMixin,
 	form_class = BarberoForm
 	second_form_class = UserForm
 	permission_required = ('barberos.add_barbero',)
-	success_url = reverse_lazy('barberos:barberos')
+	success_url = reverse_lazy('barberos:index')
 
 	def get_context_data(self, *args, **kwargs):
 		context = super().get_context_data(*args, **kwargs)
@@ -80,7 +80,7 @@ class BarberoDeleteView(generic.DeleteView):
 	model = Barbero
 	template_name = 'barberos/delete.html'
 	context_object_name = 'barbero'
-	success_url = reverse_lazy('barberos:barberos')
+	success_url = reverse_lazy('barberos:index')
 
 	def post(self, request, pk):
 		barbero = Barbero.objects.get(pk=pk)
@@ -110,11 +110,11 @@ class ContactoUpdate(generic.UpdateView):
 	form_class = ContactoForm
 	template_name = 'barberos/contacto_form.html'
 	context_object_name = 'contacto'
-	success_url = reverse_lazy('barberos:barberos')
+	success_url = reverse_lazy('barberos:index')
 
 
 class ContactoDelete(generic.DeleteView):
 	model = Contacto
 	template_name = 'barberos/eliminar_contacto.html'
 	context_object_name = 'contacto'
-	success_url = reverse_lazy('barberos:barberos')	
+	success_url = reverse_lazy('barberos:index')	
