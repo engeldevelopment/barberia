@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Sin permisos</title>
+	<link rel="stylesheet" href="{% static 'web/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'web/css/index.css' %}">
+</head>
+<body>
+	<main class="container">
+	  <div class="row">
+	  	<div class="col-12 mt-4">
+	  	  <figure class="figure">
+	  	  	<div class="figure-img">
+	  	  	  <img src="{% static 'web/img/1.png' %}" class="img-fluid">
+	  	  	</div>
+	  	  	<div class="figure-caption">	
+			  <h1 class="text-danger">¡Recurso no encontrado!</h1>
+			  <p class="lead text-justify">Esta página que intentas buscar, no
+				se encuentra en nuestra sitio web.
+			  </p>
+	  	  	</div>
+	  	  </figure>	
+	  	</div>
+	  </div>
+	  {% include 'web/footer.html' %}
+	</main>
+	<script src="{% static 'web/js/jquery.min.js' %}"></script>
+	<script src="{% static 'web/js/popper.min.js' %}"></script>
+	<script src="{% static 'web/js/bootstrap.min.js' %}"></script>
+	
+</body>
+</html>
