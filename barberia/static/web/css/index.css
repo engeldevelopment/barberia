@@ -3,8 +3,11 @@
 	color: #FFFFFF;
 }
 
-.btn {
+.btn[data-link='circle'] {
 	border: none;
+	color: #FFFFFF;
+	font-weight: bold;
+	border-radius: 100%;
 }
 
 .btn-primary {
@@ -34,8 +37,8 @@
 	}
 }
 
-.card[data-servicio] {
-	height: 400px;
+.card[data-servicio='servicio'] {
+	height: 450px;
 }
 
 .card-img {
@@ -44,6 +47,7 @@
 
 .img-servicio {
 	height: 300px;
+	width: auto;
 }
 
 .card-header {

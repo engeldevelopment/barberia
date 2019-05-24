@@ -7,26 +7,40 @@
 {% block content %}
 
   {% if user.is_superuser %}	
-  <div class="row offset-md-1">
+  <div class="row offset-md">
     <div class="col-12 mt-3">
-      <a href="{% url 'servicios:registrar' %}" class="btn btn-light"> <i class="fa fa-plus"></i> Add</a>
+      <a href="{% url 'servicios:registrar' %}" class="btn btn-primary" data-link="circle"> <i class="fa fa-plus"></i></a>
     </div>  	
   </div>	
   {% endif %}
 
-	<div class="row offset-md-1">
+	<div class="row offset-md">
 	{% for servicio in servicios %}
 	  <div class="col-12 col-sm-6 col-md-4 mt-4 mb-4">	
-	  	<div class="card" data-servicio>
+	  	<div class="card" data-servicio="servicio">
 	  		<div class="card-img">
 	  			<img src="{{ servicio.foto.url }}" alt="{{ servicio.descripcion }}" class="img-fluid img-servicio">
 	  		</div>
 	  		<div class="card-body">
 		  		<div class="card-title">
-		  			<h4> {{ servicio.descripcion }} </h4>
-		  		</div>
-		  		<div class="card-text">
-		  			<p>Precio: <strong> {{ servicio.precio|precio_bs }} </strong> </p>
+		  			<div class="row">
+		  				<div class="col-12 col-sm-6">
+		  					<h4> {{ servicio.descripcion }} </h4>
+		  					<div class="card-text">
+		  						<p>Precio: <strong> {{ servicio.precio|precio_bs }} </strong> </p>
+		  					</div>
+		  				</div>
+		  				<div class="col-12 col-sm-6">
+		  					<div class="row">
+		  						<div class="col-6 col-sm-6 mr-0 mb-md-2">
+		  							<a href="{% url 'servicios:editar_servicio' servicio.pk %}" class="btn btn-primary" data-link='circle'><i class="fa fa-edit"></i></a>
+		  						</div>
+		  						<div class="col-6 col-sm-6 mr-0 mb-md-2">
+		  							<a href="{% url 'servicios:eliminar_servicio' servicio.pk %}" class="btn btn-danger" data-link='circle'><i class="fa fa-trash"></i></a>
+		  						</div>
+		  					</div>
+		  				</div>
+		  			</div>
 		  		</div>
 	  		</div>
 	  	</div>  	
