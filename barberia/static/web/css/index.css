@@ -4,13 +4,14 @@
 }
 
 .btn[data-link='circle'] {
-	border: none;
+	border-style: none;
 	color: #FFFFFF;
 	font-weight: bold;
 	border-radius: 100%;
 }
 
 .btn-primary {
+	border-style: none;
 	background: #810D36;
 	color: #FFFFFF;
 	font-weight: bold;
