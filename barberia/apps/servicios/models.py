@@ -1,13 +1,17 @@
-
 from django.db import models
 
 
 class Servicio(models.Model):
 	descripcion = models.CharField(max_length=30, unique=True)
 	precio = models.DecimalField(max_digits=7, decimal_places=2)
+	foto = models.ImageField(
+			upload_to='servicios', 
+			null=True, blank=True,
+			default="web/2.jpeg"
+		)
 
 	def __str__(self):
-		return "{desc}".format(desc=self.descripcion)
+		return self.descripcion
 
 
 DIAS_LABORABLES = (

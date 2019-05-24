@@ -27,6 +27,25 @@
 	height: 800px;
 }
 
+@media screen and (max-height: 800px) {
+
+	#contenido {
+		height: auto;
+	}
+}
+
+.card[data-servicio] {
+	height: 400px;
+}
+
+.card-img {
+	border: 3px dashed #810D36;
+}
+
+.img-servicio {
+	height: 300px;
+}
+
 .card-header {
 	background: #810D36;
 	color: #FFFFFF;
