@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
     'apps.servicios',
     'apps.barberos',
 ]
@@ -112,11 +111,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATICFILES_DIRS = [dir_root('static')]
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = dir_root('media')
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'servicios:index'
 LOGOUT_REDIRECT_URL = 'login'
