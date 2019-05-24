@@ -25,3 +25,15 @@ Tales servicios son los siguientes:
 - Jquery cookie 1.4
 - Bootstrap
 
+## Subir BarberCachets a un servidor apache
+
+1. Instalar dependencias para el proyecto
+ 
+ - Clona el repositorio desde Github 
+ - Crear un entorno virtual con virtualenv dentro del repositorio que acabas de descargar
+ 	```
+ 		virtualenv -p python3 env
+	```
+ 	
+ - Ac
+
