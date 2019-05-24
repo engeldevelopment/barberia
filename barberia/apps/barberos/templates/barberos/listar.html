@@ -6,40 +6,40 @@
 
   {% for barbero in barberos %}
   <div class="row offset-md-3">
-	<div class="col-12 col-sm-12 col-md-8 mt-4 mb-4">
-	  <div class="card">
-		<div class="card-header">
-		  <h5> Barber: {{ barbero }} </h5>
-		</div>
-		<div class="card-body">
-		  <div class="card-text">	
-			<p> Estado:  	
-				{% if barbero.activo %}
-				   <i class="fas fa-toggle-on" id="status-{{ barbero.pk }}"></i>
-				{% else %}
-					<i class="fas fa-toggle-off" id="status-{{ barbero.pk }}"></i>
-				{% endif %}
-			</p> 
-		  </div>
-		</div>
-		<div class="card-footer">
-		  <div class="btn-group">
+		<div class="col-12 col-sm-12 col-md-8 mt-4 mb-4">
+	  	<div class="card">
+				<div class="card-header">
+		  		<h5> Barber: {{ barbero }} </h5>
+				</div>
+				<div class="card-body">
+		  		<div class="card-text">	
+						<p> Estado:  	
+						{% if barbero.activo %}
+				   		<i class="fas fa-toggle-on" id="status-{{ barbero.pk }}"></i>
+						{% else %}
+							<i class="fas fa-toggle-off" id="status-{{ barbero.pk }}"></i>
+						{% endif %}
+						</p> 
+		  		</div>
+				</div>
+				<div class="card-footer">
+		  		<div class="btn-group">
 		  	
-			<a href="{{ barbero.get_absolute_url }}" class="btn btn-light"> <i class="fa fa-eye"></i></a>
+						<a href="{{ barbero.get_absolute_url }}" class="btn btn-light"> <i class="fa fa-eye"></i></a>
 
-			{% if user.is_authenticated and user == barbero.usuario %}
-			  <form action="{% url 'barberos:cambiar_status' barbero.pk %}" method="POST" id="form-cambiar-status"> {% csrf_token %}
-			    <button type="submit" class="btn btn-success" id="cambiar-status"> Cambiar Status </button>
-			  </form>
-			{% endif %}
+						{% if user.is_authenticated and user == barbero.usuario %}
+			  			<form action="{% url 'barberos:cambiar_status' barbero.pk %}" method="POST" id="form-cambiar-status"> {% csrf_token %}
+			    			<button type="submit" class="btn btn-success" id="cambiar-status"> Cambiar Status </button>
+			  			</form>
+						{% endif %}
 
-			{% if user.is_superuser %}
-			  <a href="{% url 'barberos:eliminar' barbero.pk %}" class="btn btn-outline-danger"> Eliminar <i class="fa fa-trash"></i></a>
-			{% endif %}
-		  </div>  			
+						{% if user.is_superuser %}
+			  			<a href="{% url 'barberos:eliminar' barbero.pk %}" class="btn btn-outline-danger"> Eliminar <i class="fa fa-trash"></i></a>
+						{% endif %}
+		  		</div>  			
+				</div>
+	  	</div>	
 		</div>
-	  </div>	
-	</div>
   </div>
   {% empty %}
   <div class="row offset-md-3">
