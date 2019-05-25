@@ -52,8 +52,6 @@ class BarberoCambiarStatus(LoginRequiredMixin,
 	def post(self, request, pk):
 		barbero = get_object_or_404(Barbero, pk=pk)
 		barbero.cambiar_status()
-		barbero.save()
-
 		return JsonResponse({'status': barbero.activo, 'pk': pk}, status=200)
 
 

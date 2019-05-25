@@ -18,7 +18,7 @@ class Barbero(models.Model):
 
 	def cambiar_status(self):
 		self.activo = not self.activo
-		return self.activo
+		self.save()
 
 
 class Contacto(models.Model):
