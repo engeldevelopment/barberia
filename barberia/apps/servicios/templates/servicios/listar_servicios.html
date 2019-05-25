@@ -24,12 +24,13 @@
 	  		<div class="card-body">
 		  		<div class="card-title">
 		  			<div class="row">
-		  				<div class="col-12 col-sm-6 col-md-8">
+		  				<div class="col-12 col-sm-6 col-md-9">
 		  					<h5> {{ servicio.descripcion }} </h5>
 		  					<div class="card-text">
 		  						<p>Precio: <strong> {{ servicio.precio|precio_bs }} </strong> </p>
 		  					</div>
 		  				</div>
+		  				{% if user.is_superuser %}
 		  				<div class="col-12 col-sm-6 col-md-3">
 		  					<div class="row">
 		  						<div class="col-6 col-sm-6 col-md-8 mr-0 mb-md-2">
@@ -40,6 +41,7 @@
 		  						</div>
 		  					</div>
 		  				</div>
+		  				{% endif %}
 		  			</div>
 		  		</div>
 	  		</div>

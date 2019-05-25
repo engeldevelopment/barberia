@@ -10,13 +10,18 @@
 	  	<div class="card-header">
 		  <h3><i class="fa fa-tag"></i> Editar Servicio </h3>
 	    </div>
+	    <div class="card-img">
+		  	<div class="col-12">
+		  		<img src="{{ servicio.foto.url }}" alt="{{ servicio.descripcion }}" class="img-thumbnail rounded-circle img-servicio offset-md-2">
+		  	</div>
+		  </div>
 	  {% else %}
 	    <div class="card-header">
 		  <h3><i class="fa fa-tag"></i> Añadir Servicio </h3>
 	    </div>
 	  {% endif %}
 	  <div class="card-body">
-		<form action="" method="post"> {% csrf_token %}
+		<form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
 		  <div class="form-group">
 		  	<label> {{ form.descripcion.label }}</label>
 		  	{{ form.descripcion }}
@@ -25,7 +30,12 @@
 		  	<label> {{ form.precio.label }}</label>
 		  	{{ form.precio }}
 		  </div>
+		  <div class="form-group">
+		  	<label id='{{ form.foto.id_for_label }}'> {{ form.foto.label }}</label>
+		  	{{ form.foto }}
+		  </div>
 		  <button type="submit" class="btn btn-primary"> Guardar </button>
+			<a href="{% url 'servicios:index' %}" class="btn btn-secondary">Atrás</a>
 		</form>
 	  </div>	
 	</div>
