@@ -6,10 +6,12 @@ from .models import *
 from .forms import ServicioForm
 
 
-class ServicioCreateView(LoginRequiredMixin, 
+class ServicioCreateView(LoginRequiredMixin,
+						PermissionRequiredMixin, 
 						generic.CreateView):
 	model = Servicio
 	form_class = ServicioForm
+	permission_required = ('servicios.add_servicio',)
 	template_name = 'servicios/servicio_form.html'
 	success_url = reverse_lazy('servicios:index') 	
 
