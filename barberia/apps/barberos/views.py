@@ -125,6 +125,18 @@ class ContactoUpdate(generic.UpdateView):
 	context_object_name = 'contacto'
 	success_url = reverse_lazy('barberos:index')
 
+	def post(self, request, pk):
+		self.object = self.get_object
+
+		form  = self.form_class(request.POST)
+		if form.is_valid():
+			contacto = get_object_or_404(Contacto, pk=pk)
+			contacto.numero = request.POST.get('numero')
+			contacto.save()
+			return redirect(contacto.barbero)
+
+		return self.form_invalid(self, form)
+
 
 class ContactoDelete(generic.DeleteView):
 	model = Contacto

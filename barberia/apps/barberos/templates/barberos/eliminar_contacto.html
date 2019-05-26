@@ -13,10 +13,10 @@
 			<div class="card-text">
 			  <p> Estás apundo de eliminar este contacto <strong> {{ contacto.numero }} </strong> ¿Estás seguro?</p>
 			</div>	
-			<form action="{% url 'barberos:eliminar_contacto' contacto.pk %}" method="post"> {% csrf_token %}				
+			<form action="" method="post"> {% csrf_token %}				
 			  <div class="row btn-group offset-1">
 				<button type="submit" class="btn btn-outline-danger"> <strong>Sí, estoy seguro!</strong> </button>
-				<a href="{% url 'barberos:barberos' %}" class="btn btn-outline-secondary"> Atrás </a>	
+				<a href="{% url 'barberos:index' %}" class="btn btn-outline-secondary"> Atrás </a>	
 			   </div>
 			</form>
 		   </div>
