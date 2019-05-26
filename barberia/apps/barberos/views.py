@@ -88,19 +88,34 @@ class BarberoDeleteView(generic.DeleteView):
 		return HttpResponseRedirect(self.success_url)		
 
 
-def crear_contacto(request, id_barbero):
-	barbero = Barbero.objects.get(pk=id_barbero)
-	
-	if request.method == 'POST':
-		form = ContactoForm(request.POST)
+class ContactoCreateView(generic.CreateView):
+	model = Contacto
+	template_name = 'barberos/contacto_form.html'
+	form_class = ContactoForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+
+		if not 'form' in context:
+			context['form'] = self.form_class
+
+		return context
+
+	def post(self, request, id_barbero):
+		barbero = get_object_or_404(
+				Barbero, 
+				pk=id_barbero
+			)
+
+		form = self.form_class(request.POST)
+
 		if form.is_valid():
 			numero = request.POST.get('numero')
 			contacto = Contacto.objects.create(numero=numero, barbero=barbero)
 			return redirect(barbero)
 
-	form = ContactoForm(request.GET)
+		return render(request, self.template_name, {'form': form})	
 
-	return render(request, 'barberos/contacto_form.html', {'form': form})
 
 
 class ContactoUpdate(generic.UpdateView):

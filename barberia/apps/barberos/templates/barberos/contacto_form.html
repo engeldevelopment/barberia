@@ -14,7 +14,7 @@
 			{% endif %}
 		  </div>
 		  <div class="card-body">
-			<form method="post" class="form-group"> {% csrf_token %}
+			<form method="post" class="form-group" action=""> {% csrf_token %}
 				<div class="form-group">
 				  <label> {{ form.numero.label }} </label>
 				  {{ form.numero }}
