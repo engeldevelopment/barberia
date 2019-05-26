@@ -93,14 +93,6 @@ class ContactoCreateView(generic.CreateView):
 	template_name = 'barberos/contacto_form.html'
 	form_class = ContactoForm
 
-	def get_context_data(self, *args, **kwargs):
-		context = super().get_context_data(*args, **kwargs)
-
-		if not 'form' in context:
-			context['form'] = self.form_class
-
-		return context
-
 	def post(self, request, id_barbero):
 		barbero = get_object_or_404(
 				Barbero, 
@@ -142,4 +134,10 @@ class ContactoDelete(generic.DeleteView):
 	model = Contacto
 	template_name = 'barberos/eliminar_contacto.html'
 	context_object_name = 'contacto'
-	success_url = reverse_lazy('barberos:index')	
+	success_url = reverse_lazy('barberos:index')
+
+	def post(self, request, pk):
+		contacto = get_object_or_404(Contacto, pk=pk)
+		barbero = contacto.barbero
+		contacto.delete()
+		return redirect(barbero)	
