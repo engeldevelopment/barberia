@@ -28,14 +28,7 @@
 }
 
 #contenido {
-	height: 800px;
-}
-
-@media screen and (max-height: 800px) {
-
-	#contenido {
-		height: auto;
-	}
+	height: 100%;
 }
 
 .card[data-servicio='servicio'] {
@@ -48,7 +41,7 @@
 
 .img-servicio {
 	height: 300px;
-	width: auto;
+	width: 100%;
 }
 
 .card-header {
@@ -66,16 +59,6 @@ footer {
 	height: 400px;
 	padding: 20px;
 	border-radius: 5px;
-}
-
-@media screen and (max-width: 572px) {
-	footer {
-		height: auto;	
-	}
-
-	#contenido {
-		height: auto;
-	}
 }
 
 #horarios:hover {
@@ -116,4 +99,17 @@ footer {
 
 .tabla {
 	background: #FFFFFF;
+}
+
+@media screen and (min-height: 800px) {
+
+	#contenido {
+		height: 100%;
+	}
+}
+
+@media screen and (max-width: 572px) {
+	footer {
+		height: auto;	
+	}
 }
