@@ -1,16 +1,16 @@
 from django.http import JsonResponse
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views import generic
 from django.urls import reverse_lazy
+from .mixins import BarberoBasicMixin
 from .models import Barbero, Contacto 
 from .forms import ContactoForm, BarberoForm, UserForm
 
 
-class BarberoCreateView(PermissionRequiredMixin,
-						LoginRequiredMixin, 
+class BarberoCreateView(BarberoBasicMixin, 
 						generic.CreateView):
 	model = Barbero	
 	template_name = 'barberos/form.html'
@@ -74,10 +74,12 @@ class BarberoDetail(generic.DetailView):
 		return context
 
 
-class BarberoDeleteView(generic.DeleteView):
+class BarberoDeleteView(BarberoBasicMixin, 
+						generic.DeleteView):
 	model = Barbero
 	template_name = 'barberos/delete.html'
 	context_object_name = 'barbero'
+	permission_required = ('barberos.delete_barbero',)
 	success_url = reverse_lazy('barberos:index')
 
 	def post(self, request, pk):
@@ -88,10 +90,12 @@ class BarberoDeleteView(generic.DeleteView):
 		return HttpResponseRedirect(self.success_url)		
 
 
-class ContactoCreateView(generic.CreateView):
+class ContactoCreateView(BarberoBasicMixin,
+						 generic.CreateView):
 	model = Contacto
 	template_name = 'barberos/contacto_form.html'
 	form_class = ContactoForm
+	permission_required = ('barberos.add_contacto',)
 
 	def post(self, request, id_barbero):
 		barbero = get_object_or_404(
@@ -110,11 +114,13 @@ class ContactoCreateView(generic.CreateView):
 
 
 
-class ContactoUpdate(generic.UpdateView):
+class ContactoUpdate(BarberoBasicMixin,
+					 generic.UpdateView):
 	model = Contacto
 	form_class = ContactoForm
 	template_name = 'barberos/contacto_form.html'
 	context_object_name = 'contacto'
+	permission_required = ('barberos.edit_contacto',)
 	success_url = reverse_lazy('barberos:index')
 
 	def post(self, request, pk):
@@ -130,10 +136,12 @@ class ContactoUpdate(generic.UpdateView):
 		return self.form_invalid(self, form)
 
 
-class ContactoDelete(generic.DeleteView):
+class ContactoDelete(BarberoBasicMixin, 
+					generic.DeleteView):
 	model = Contacto
 	template_name = 'barberos/eliminar_contacto.html'
 	context_object_name = 'contacto'
+	permission_required = ('barberos.delete_contacto',)
 	success_url = reverse_lazy('barberos:index')
 
 	def post(self, request, pk):
