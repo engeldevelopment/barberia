@@ -1,5 +1,7 @@
 {% extends 'servicios/base.html' %}
 
+{% load static %}
+
 {% load servicios_tags %}
 
 {% block title %} {{ block.super }} - Lista {% endblock %}
@@ -19,7 +21,7 @@
 	  <div class="col-12 col-sm-6 col-md-4 mt-4 mb-4">	
 	  	<div class="card" data-servicio="servicio">
 	  		<div class="card-img">
-	  			<img src="{{ servicio.foto.url }}" alt="{{ servicio.descripcion }}" class="img-fluid img-servicio">
+	  			<img src="{% if servicio.foto %} {{ servicio.foto.url }} {% else %} {% static 'web/img/2.jpeg' %} {% endif %}" alt="{{ servicio.descripcion }}" class="img-fluid img-servicio">
 	  		</div>
 	  		<div class="card-body">
 		  		<div class="card-title">

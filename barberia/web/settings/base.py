@@ -114,6 +114,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = dir_root('media')
+STATICFILES_DIRS = dir_root('static')
 
 LOGIN_REDIRECT_URL = 'servicios:index'
 LOGOUT_REDIRECT_URL = 'login'
