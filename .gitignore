@@ -1,10 +1,12 @@
 *.log
 *.pot
 *.pyc
+.vscode/
+.idea/
 __pycache__/
-db.sqlite3
-*.py[cod]
+*.sqlite3
+*.py[co]
+staticfiles/
 media/
 .idea/
-"barberia/\0010\005@@X\f@8\b@!\036\006\005@@@@@\300\001\300\001\b\003\004\002\002@\002@\034\034\001\001\005@@\214\b\214\b"
-/env/
+.env
