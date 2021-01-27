@@ -1,13 +1,12 @@
 language: python
 
 python:
-  - '3.5'
+  - '3.6'
 
 install:
-  - pip install -r requirements/base.txt
+  - pip install -r requirements/ci.txt
 
 before_script:
-  - cd barberia
   - python manage.py migrate
 
 script:
