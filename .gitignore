@@ -10,3 +10,4 @@ staticfiles/
 media/
 .idea/
 .env
+.coverage

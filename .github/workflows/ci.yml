@@ -20,3 +20,6 @@ jobs:
         run: pip install -r requirements/ci.txt
       - name: Running tests
         run: make test
+      - name: Running coverage
+        run: make coverage
+

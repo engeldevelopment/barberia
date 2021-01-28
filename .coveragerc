@@ -1,0 +1,13 @@
+[run]
+source = apps
+omit = 
+    */tests/*
+    */migrations/*
+    */admin.py
+    */__init__.py
+    */apps.py
+
+
+[report]
+ignore_errors = True
+exclude_lines = def __str__
