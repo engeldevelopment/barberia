@@ -2,6 +2,9 @@
 from os.path import abspath, dirname, join
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
+from decouple import config
+
+
 def root(*dirs):
     BASE_DIR = join(dirname(__file__), '..', '..')
     return abspath(join(BASE_DIR, *dirs))
@@ -10,10 +13,10 @@ def root(*dirs):
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'uzwc@h6s&i4cc5fdcex#^wxs@e)+!q%j&v-tw)!h5z81yk*053'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = []
 
