@@ -1,12 +1,10 @@
 
-import os
-
+from os.path import abspath, dirname, join
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-dir_now = lambda *dirs: os.path.join(os.path.abspath(os.path.dirname(__file__)), *dirs)
 
-BASE_DIR = dir_now("..", "..")
-
-dir_root = lambda *dirs: os.path.join(os.path.abspath(BASE_DIR), *dirs)
+def root(*dirs):
+    BASE_DIR = join(dirname(__file__), '..', '..')
+    return abspath(join(BASE_DIR, *dirs))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -43,12 +41,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'web.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [dir_root("templates")],
+        'DIRS': [root("apps/templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -61,17 +59,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'web.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': dir_root('db.sqlite3'),
-    }
+  
 }
 
 
@@ -99,7 +94,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-ve'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Caracas'
 
 USE_I18N = True
 
@@ -113,8 +108,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = dir_root('media')
-STATICFILES_DIRS = dir_root('static')
+MEDIA_ROOT = root('media')
+STATICFILES_DIRS = [root('apps/static'),]
 
 LOGIN_REDIRECT_URL = 'servicios:index'
 LOGOUT_REDIRECT_URL = 'login'
+STATIC_ROOT = root('staticfiles')
