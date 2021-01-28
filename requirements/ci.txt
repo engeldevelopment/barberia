@@ -1,4 +1,4 @@
 -r base.txt
+
 coverage==5.4
-selenium==3.141.0
-factorty-boy==3.2.0
+factory-boy==3.2.0
