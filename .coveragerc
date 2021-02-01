@@ -10,4 +10,6 @@ omit =
 
 [report]
 ignore_errors = True
-exclude_lines = def __str__
+exclude_lines = 
+	def __str__
+	def get_absolute_url
